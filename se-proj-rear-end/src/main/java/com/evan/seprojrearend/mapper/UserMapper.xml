@@ -215,6 +215,15 @@
     from user
     where userId = #{userid,jdbcType=VARCHAR}
   </select>
+  <!-- new mapper start-->
+  <select id="selectByName" resultType="com.alibaba.fastjson.JSONObject">
+    select *
+    from user
+    where
+    username = #{username,jdbcType=VARCHAR} and
+    password = #{password,jdbcType=VARCHAR}
+  </select>
+  <!-- new mapper end-->
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from user
     where userId = #{userid,jdbcType=VARCHAR}
