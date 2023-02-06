@@ -19,10 +19,10 @@ public class UserService {
     @Autowired
     private UserMapper userMapper;
 
-
-    public int insert(User record){return userMapper.insert(record);}
-
-//    public Integer insert(User user){
-//        return userMapper.insert(user);
-//    }
+    /**
+     * 根据userid获取用户信息
+     * **/
+    public User selectByPrimaryKey(String userid){
+        return userMapper.selectByPrimaryKey(userid);
+    }
 }

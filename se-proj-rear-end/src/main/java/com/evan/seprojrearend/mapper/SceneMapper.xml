@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.evan.seprojrearend.mapper.SceneMapper">
+  <resultMap id="BaseResultMap" type="com.evan.seprojrearend.po.Scene">
+    <id column="sceneName" jdbcType="VARCHAR" property="scenename" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="sceneType" jdbcType="VARCHAR" property="scenetype" />
+    <result column="riskType" jdbcType="VARCHAR" property="risktype" />
+    <result column="roadType" jdbcType="VARCHAR" property="roadtype" />
+    <result column="laneNum" jdbcType="INTEGER" property="lanenum" />
+    <result column="apolloScore" jdbcType="REAL" property="apolloscore" />
+    <result column="downloadLink" jdbcType="VARCHAR" property="downloadlink" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sceneName, source, sceneType, riskType, roadType, laneNum, apolloScore, downloadLink
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from scene
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from scene
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.evan.seprojrearend.po.Scene">
+    insert into scene (sceneName, source, sceneType, 
+      riskType, roadType, laneNum, 
+      apolloScore, downloadLink)
+    values (#{scenename,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, #{scenetype,jdbcType=VARCHAR}, 
+      #{risktype,jdbcType=VARCHAR}, #{roadtype,jdbcType=VARCHAR}, #{lanenum,jdbcType=INTEGER}, 
+      #{apolloscore,jdbcType=REAL}, #{downloadlink,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.evan.seprojrearend.po.Scene">
+    insert into scene
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="scenename != null">
+        sceneName,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="scenetype != null">
+        sceneType,
+      </if>
+      <if test="risktype != null">
+        riskType,
+      </if>
+      <if test="roadtype != null">
+        roadType,
+      </if>
+      <if test="lanenum != null">
+        laneNum,
+      </if>
+      <if test="apolloscore != null">
+        apolloScore,
+      </if>
+      <if test="downloadlink != null">
+        downloadLink,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="scenename != null">
+        #{scenename,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="scenetype != null">
+        #{scenetype,jdbcType=VARCHAR},
+      </if>
+      <if test="risktype != null">
+        #{risktype,jdbcType=VARCHAR},
+      </if>
+      <if test="roadtype != null">
+        #{roadtype,jdbcType=VARCHAR},
+      </if>
+      <if test="lanenum != null">
+        #{lanenum,jdbcType=INTEGER},
+      </if>
+      <if test="apolloscore != null">
+        #{apolloscore,jdbcType=REAL},
+      </if>
+      <if test="downloadlink != null">
+        #{downloadlink,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.evan.seprojrearend.po.Scene">
+    update scene
+    <set>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="scenetype != null">
+        sceneType = #{scenetype,jdbcType=VARCHAR},
+      </if>
+      <if test="risktype != null">
+        riskType = #{risktype,jdbcType=VARCHAR},
+      </if>
+      <if test="roadtype != null">
+        roadType = #{roadtype,jdbcType=VARCHAR},
+      </if>
+      <if test="lanenum != null">
+        laneNum = #{lanenum,jdbcType=INTEGER},
+      </if>
+      <if test="apolloscore != null">
+        apolloScore = #{apolloscore,jdbcType=REAL},
+      </if>
+      <if test="downloadlink != null">
+        downloadLink = #{downloadlink,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.evan.seprojrearend.po.Scene">
+    update scene
+    set source = #{source,jdbcType=VARCHAR},
+      sceneType = #{scenetype,jdbcType=VARCHAR},
+      riskType = #{risktype,jdbcType=VARCHAR},
+      roadType = #{roadtype,jdbcType=VARCHAR},
+      laneNum = #{lanenum,jdbcType=INTEGER},
+      apolloScore = #{apolloscore,jdbcType=REAL},
+      downloadLink = #{downloadlink,jdbcType=VARCHAR}
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.evan.seprojrearend.po.Scene">
+    <id column="sceneName" jdbcType="VARCHAR" property="scenename" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="sceneType" jdbcType="VARCHAR" property="scenetype" />
+    <result column="riskType" jdbcType="VARCHAR" property="risktype" />
+    <result column="roadType" jdbcType="VARCHAR" property="roadtype" />
+    <result column="laneNum" jdbcType="INTEGER" property="lanenum" />
+    <result column="apolloScore" jdbcType="REAL" property="apolloscore" />
+    <result column="downloadLink" jdbcType="VARCHAR" property="downloadlink" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sceneName, source, sceneType, riskType, roadType, laneNum, apolloScore, downloadLink
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from scene
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from scene
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.evan.seprojrearend.po.Scene">
+    insert into scene (sceneName, source, sceneType, 
+      riskType, roadType, laneNum, 
+      apolloScore, downloadLink)
+    values (#{scenename,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, #{scenetype,jdbcType=VARCHAR}, 
+      #{risktype,jdbcType=VARCHAR}, #{roadtype,jdbcType=VARCHAR}, #{lanenum,jdbcType=INTEGER}, 
+      #{apolloscore,jdbcType=REAL}, #{downloadlink,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.evan.seprojrearend.po.Scene">
+    insert into scene
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="scenename != null">
+        sceneName,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="scenetype != null">
+        sceneType,
+      </if>
+      <if test="risktype != null">
+        riskType,
+      </if>
+      <if test="roadtype != null">
+        roadType,
+      </if>
+      <if test="lanenum != null">
+        laneNum,
+      </if>
+      <if test="apolloscore != null">
+        apolloScore,
+      </if>
+      <if test="downloadlink != null">
+        downloadLink,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="scenename != null">
+        #{scenename,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="scenetype != null">
+        #{scenetype,jdbcType=VARCHAR},
+      </if>
+      <if test="risktype != null">
+        #{risktype,jdbcType=VARCHAR},
+      </if>
+      <if test="roadtype != null">
+        #{roadtype,jdbcType=VARCHAR},
+      </if>
+      <if test="lanenum != null">
+        #{lanenum,jdbcType=INTEGER},
+      </if>
+      <if test="apolloscore != null">
+        #{apolloscore,jdbcType=REAL},
+      </if>
+      <if test="downloadlink != null">
+        #{downloadlink,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.evan.seprojrearend.po.Scene">
+    update scene
+    <set>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="scenetype != null">
+        sceneType = #{scenetype,jdbcType=VARCHAR},
+      </if>
+      <if test="risktype != null">
+        riskType = #{risktype,jdbcType=VARCHAR},
+      </if>
+      <if test="roadtype != null">
+        roadType = #{roadtype,jdbcType=VARCHAR},
+      </if>
+      <if test="lanenum != null">
+        laneNum = #{lanenum,jdbcType=INTEGER},
+      </if>
+      <if test="apolloscore != null">
+        apolloScore = #{apolloscore,jdbcType=REAL},
+      </if>
+      <if test="downloadlink != null">
+        downloadLink = #{downloadlink,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.evan.seprojrearend.po.Scene">
+    update scene
+    set source = #{source,jdbcType=VARCHAR},
+      sceneType = #{scenetype,jdbcType=VARCHAR},
+      riskType = #{risktype,jdbcType=VARCHAR},
+      roadType = #{roadtype,jdbcType=VARCHAR},
+      laneNum = #{lanenum,jdbcType=INTEGER},
+      apolloScore = #{apolloscore,jdbcType=REAL},
+      downloadLink = #{downloadlink,jdbcType=VARCHAR}
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.evan.seprojrearend.po.Scene">
+    <id column="sceneName" jdbcType="VARCHAR" property="scenename" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="sceneType" jdbcType="VARCHAR" property="scenetype" />
+    <result column="riskType" jdbcType="VARCHAR" property="risktype" />
+    <result column="roadType" jdbcType="VARCHAR" property="roadtype" />
+    <result column="laneNum" jdbcType="INTEGER" property="lanenum" />
+    <result column="apolloScore" jdbcType="REAL" property="apolloscore" />
+    <result column="downloadLink" jdbcType="VARCHAR" property="downloadlink" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sceneName, source, sceneType, riskType, roadType, laneNum, apolloScore, downloadLink
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from scene
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from scene
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.evan.seprojrearend.po.Scene">
+    insert into scene (sceneName, source, sceneType, 
+      riskType, roadType, laneNum, 
+      apolloScore, downloadLink)
+    values (#{scenename,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, #{scenetype,jdbcType=VARCHAR}, 
+      #{risktype,jdbcType=VARCHAR}, #{roadtype,jdbcType=VARCHAR}, #{lanenum,jdbcType=INTEGER}, 
+      #{apolloscore,jdbcType=REAL}, #{downloadlink,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.evan.seprojrearend.po.Scene">
+    insert into scene
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="scenename != null">
+        sceneName,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="scenetype != null">
+        sceneType,
+      </if>
+      <if test="risktype != null">
+        riskType,
+      </if>
+      <if test="roadtype != null">
+        roadType,
+      </if>
+      <if test="lanenum != null">
+        laneNum,
+      </if>
+      <if test="apolloscore != null">
+        apolloScore,
+      </if>
+      <if test="downloadlink != null">
+        downloadLink,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="scenename != null">
+        #{scenename,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="scenetype != null">
+        #{scenetype,jdbcType=VARCHAR},
+      </if>
+      <if test="risktype != null">
+        #{risktype,jdbcType=VARCHAR},
+      </if>
+      <if test="roadtype != null">
+        #{roadtype,jdbcType=VARCHAR},
+      </if>
+      <if test="lanenum != null">
+        #{lanenum,jdbcType=INTEGER},
+      </if>
+      <if test="apolloscore != null">
+        #{apolloscore,jdbcType=REAL},
+      </if>
+      <if test="downloadlink != null">
+        #{downloadlink,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.evan.seprojrearend.po.Scene">
+    update scene
+    <set>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="scenetype != null">
+        sceneType = #{scenetype,jdbcType=VARCHAR},
+      </if>
+      <if test="risktype != null">
+        riskType = #{risktype,jdbcType=VARCHAR},
+      </if>
+      <if test="roadtype != null">
+        roadType = #{roadtype,jdbcType=VARCHAR},
+      </if>
+      <if test="lanenum != null">
+        laneNum = #{lanenum,jdbcType=INTEGER},
+      </if>
+      <if test="apolloscore != null">
+        apolloScore = #{apolloscore,jdbcType=REAL},
+      </if>
+      <if test="downloadlink != null">
+        downloadLink = #{downloadlink,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.evan.seprojrearend.po.Scene">
+    update scene
+    set source = #{source,jdbcType=VARCHAR},
+      sceneType = #{scenetype,jdbcType=VARCHAR},
+      riskType = #{risktype,jdbcType=VARCHAR},
+      roadType = #{roadtype,jdbcType=VARCHAR},
+      laneNum = #{lanenum,jdbcType=INTEGER},
+      apolloScore = #{apolloscore,jdbcType=REAL},
+      downloadLink = #{downloadlink,jdbcType=VARCHAR}
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.evan.seprojrearend.po.Scene">
+    <id column="sceneName" jdbcType="VARCHAR" property="scenename" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="sceneType" jdbcType="VARCHAR" property="scenetype" />
+    <result column="riskType" jdbcType="VARCHAR" property="risktype" />
+    <result column="roadType" jdbcType="VARCHAR" property="roadtype" />
+    <result column="laneNum" jdbcType="INTEGER" property="lanenum" />
+    <result column="apolloScore" jdbcType="REAL" property="apolloscore" />
+    <result column="downloadLink" jdbcType="VARCHAR" property="downloadlink" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sceneName, source, sceneType, riskType, roadType, laneNum, apolloScore, downloadLink
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from scene
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from scene
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.evan.seprojrearend.po.Scene">
+    insert into scene (sceneName, source, sceneType, 
+      riskType, roadType, laneNum, 
+      apolloScore, downloadLink)
+    values (#{scenename,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, #{scenetype,jdbcType=VARCHAR}, 
+      #{risktype,jdbcType=VARCHAR}, #{roadtype,jdbcType=VARCHAR}, #{lanenum,jdbcType=INTEGER}, 
+      #{apolloscore,jdbcType=REAL}, #{downloadlink,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.evan.seprojrearend.po.Scene">
+    insert into scene
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="scenename != null">
+        sceneName,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="scenetype != null">
+        sceneType,
+      </if>
+      <if test="risktype != null">
+        riskType,
+      </if>
+      <if test="roadtype != null">
+        roadType,
+      </if>
+      <if test="lanenum != null">
+        laneNum,
+      </if>
+      <if test="apolloscore != null">
+        apolloScore,
+      </if>
+      <if test="downloadlink != null">
+        downloadLink,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="scenename != null">
+        #{scenename,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="scenetype != null">
+        #{scenetype,jdbcType=VARCHAR},
+      </if>
+      <if test="risktype != null">
+        #{risktype,jdbcType=VARCHAR},
+      </if>
+      <if test="roadtype != null">
+        #{roadtype,jdbcType=VARCHAR},
+      </if>
+      <if test="lanenum != null">
+        #{lanenum,jdbcType=INTEGER},
+      </if>
+      <if test="apolloscore != null">
+        #{apolloscore,jdbcType=REAL},
+      </if>
+      <if test="downloadlink != null">
+        #{downloadlink,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.evan.seprojrearend.po.Scene">
+    update scene
+    <set>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="scenetype != null">
+        sceneType = #{scenetype,jdbcType=VARCHAR},
+      </if>
+      <if test="risktype != null">
+        riskType = #{risktype,jdbcType=VARCHAR},
+      </if>
+      <if test="roadtype != null">
+        roadType = #{roadtype,jdbcType=VARCHAR},
+      </if>
+      <if test="lanenum != null">
+        laneNum = #{lanenum,jdbcType=INTEGER},
+      </if>
+      <if test="apolloscore != null">
+        apolloScore = #{apolloscore,jdbcType=REAL},
+      </if>
+      <if test="downloadlink != null">
+        downloadLink = #{downloadlink,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.evan.seprojrearend.po.Scene">
+    update scene
+    set source = #{source,jdbcType=VARCHAR},
+      sceneType = #{scenetype,jdbcType=VARCHAR},
+      riskType = #{risktype,jdbcType=VARCHAR},
+      roadType = #{roadtype,jdbcType=VARCHAR},
+      laneNum = #{lanenum,jdbcType=INTEGER},
+      apolloScore = #{apolloscore,jdbcType=REAL},
+      downloadLink = #{downloadlink,jdbcType=VARCHAR}
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.evan.seprojrearend.po.Scene">
+    <id column="sceneName" jdbcType="VARCHAR" property="scenename" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="sceneType" jdbcType="VARCHAR" property="scenetype" />
+    <result column="riskType" jdbcType="VARCHAR" property="risktype" />
+    <result column="roadType" jdbcType="VARCHAR" property="roadtype" />
+    <result column="laneNum" jdbcType="INTEGER" property="lanenum" />
+    <result column="apolloScore" jdbcType="REAL" property="apolloscore" />
+    <result column="downloadLink" jdbcType="VARCHAR" property="downloadlink" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sceneName, source, sceneType, riskType, roadType, laneNum, apolloScore, downloadLink
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from scene
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from scene
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.evan.seprojrearend.po.Scene">
+    insert into scene (sceneName, source, sceneType, 
+      riskType, roadType, laneNum, 
+      apolloScore, downloadLink)
+    values (#{scenename,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, #{scenetype,jdbcType=VARCHAR}, 
+      #{risktype,jdbcType=VARCHAR}, #{roadtype,jdbcType=VARCHAR}, #{lanenum,jdbcType=INTEGER}, 
+      #{apolloscore,jdbcType=REAL}, #{downloadlink,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.evan.seprojrearend.po.Scene">
+    insert into scene
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="scenename != null">
+        sceneName,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="scenetype != null">
+        sceneType,
+      </if>
+      <if test="risktype != null">
+        riskType,
+      </if>
+      <if test="roadtype != null">
+        roadType,
+      </if>
+      <if test="lanenum != null">
+        laneNum,
+      </if>
+      <if test="apolloscore != null">
+        apolloScore,
+      </if>
+      <if test="downloadlink != null">
+        downloadLink,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="scenename != null">
+        #{scenename,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="scenetype != null">
+        #{scenetype,jdbcType=VARCHAR},
+      </if>
+      <if test="risktype != null">
+        #{risktype,jdbcType=VARCHAR},
+      </if>
+      <if test="roadtype != null">
+        #{roadtype,jdbcType=VARCHAR},
+      </if>
+      <if test="lanenum != null">
+        #{lanenum,jdbcType=INTEGER},
+      </if>
+      <if test="apolloscore != null">
+        #{apolloscore,jdbcType=REAL},
+      </if>
+      <if test="downloadlink != null">
+        #{downloadlink,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.evan.seprojrearend.po.Scene">
+    update scene
+    <set>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="scenetype != null">
+        sceneType = #{scenetype,jdbcType=VARCHAR},
+      </if>
+      <if test="risktype != null">
+        riskType = #{risktype,jdbcType=VARCHAR},
+      </if>
+      <if test="roadtype != null">
+        roadType = #{roadtype,jdbcType=VARCHAR},
+      </if>
+      <if test="lanenum != null">
+        laneNum = #{lanenum,jdbcType=INTEGER},
+      </if>
+      <if test="apolloscore != null">
+        apolloScore = #{apolloscore,jdbcType=REAL},
+      </if>
+      <if test="downloadlink != null">
+        downloadLink = #{downloadlink,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.evan.seprojrearend.po.Scene">
+    update scene
+    set source = #{source,jdbcType=VARCHAR},
+      sceneType = #{scenetype,jdbcType=VARCHAR},
+      riskType = #{risktype,jdbcType=VARCHAR},
+      roadType = #{roadtype,jdbcType=VARCHAR},
+      laneNum = #{lanenum,jdbcType=INTEGER},
+      apolloScore = #{apolloscore,jdbcType=REAL},
+      downloadLink = #{downloadlink,jdbcType=VARCHAR}
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </update>
+</mapper>
