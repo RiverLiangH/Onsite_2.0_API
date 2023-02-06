@@ -2,6 +2,452 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.evan.seprojrearend.mapper.UserMapper">
   <resultMap id="BaseResultMap" type="com.evan.seprojrearend.po.User">
+    <id column="userId" jdbcType="VARCHAR" property="userid" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="school" jdbcType="VARCHAR" property="school" />
+    <result column="department" jdbcType="VARCHAR" property="department" />
+    <result column="supervisorName" jdbcType="VARCHAR" property="supervisorname" />
+    <result column="supervisorRank" jdbcType="VARCHAR" property="supervisorrank" />
+    <result column="researchField" jdbcType="VARCHAR" property="researchfield" />
+    <result column="works" jdbcType="VARCHAR" property="works" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    userId, userName, mobile, email, age, sex, password, school, department, supervisorName, 
+    supervisorRank, researchField, works
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where userId = #{userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where userId = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.evan.seprojrearend.po.User">
+    insert into user (userId, userName, mobile, 
+      email, age, sex, password, 
+      school, department, supervisorName, 
+      supervisorRank, researchField, works
+      )
+    values (#{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{sex,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{school,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, #{supervisorname,jdbcType=VARCHAR}, 
+      #{supervisorrank,jdbcType=VARCHAR}, #{researchfield,jdbcType=VARCHAR}, #{works,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.evan.seprojrearend.po.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="username != null">
+        userName,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="school != null">
+        school,
+      </if>
+      <if test="department != null">
+        department,
+      </if>
+      <if test="supervisorname != null">
+        supervisorName,
+      </if>
+      <if test="supervisorrank != null">
+        supervisorRank,
+      </if>
+      <if test="researchfield != null">
+        researchField,
+      </if>
+      <if test="works != null">
+        works,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null">
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisorname != null">
+        #{supervisorname,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisorrank != null">
+        #{supervisorrank,jdbcType=VARCHAR},
+      </if>
+      <if test="researchfield != null">
+        #{researchfield,jdbcType=VARCHAR},
+      </if>
+      <if test="works != null">
+        #{works,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.evan.seprojrearend.po.User">
+    update user
+    <set>
+      <if test="username != null">
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null">
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisorname != null">
+        supervisorName = #{supervisorname,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisorrank != null">
+        supervisorRank = #{supervisorrank,jdbcType=VARCHAR},
+      </if>
+      <if test="researchfield != null">
+        researchField = #{researchfield,jdbcType=VARCHAR},
+      </if>
+      <if test="works != null">
+        works = #{works,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userId = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.evan.seprojrearend.po.User">
+    update user
+    set userName = #{username,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      school = #{school,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
+      supervisorName = #{supervisorname,jdbcType=VARCHAR},
+      supervisorRank = #{supervisorrank,jdbcType=VARCHAR},
+      researchField = #{researchfield,jdbcType=VARCHAR},
+      works = #{works,jdbcType=VARCHAR}
+    where userId = #{userid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.evan.seprojrearend.po.User">
+    <id column="userId" jdbcType="VARCHAR" property="userid" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="school" jdbcType="VARCHAR" property="school" />
+    <result column="department" jdbcType="VARCHAR" property="department" />
+    <result column="supervisorName" jdbcType="VARCHAR" property="supervisorname" />
+    <result column="supervisorRank" jdbcType="VARCHAR" property="supervisorrank" />
+    <result column="researchField" jdbcType="VARCHAR" property="researchfield" />
+    <result column="works" jdbcType="VARCHAR" property="works" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    userId, userName, mobile, email, age, sex, password, school, department, supervisorName, 
+    supervisorRank, researchField, works
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where userId = #{userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where userId = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.evan.seprojrearend.po.User">
+    insert into user (userId, userName, mobile, 
+      email, age, sex, password, 
+      school, department, supervisorName, 
+      supervisorRank, researchField, works
+      )
+    values (#{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{sex,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{school,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, #{supervisorname,jdbcType=VARCHAR}, 
+      #{supervisorrank,jdbcType=VARCHAR}, #{researchfield,jdbcType=VARCHAR}, #{works,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.evan.seprojrearend.po.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="username != null">
+        userName,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="school != null">
+        school,
+      </if>
+      <if test="department != null">
+        department,
+      </if>
+      <if test="supervisorname != null">
+        supervisorName,
+      </if>
+      <if test="supervisorrank != null">
+        supervisorRank,
+      </if>
+      <if test="researchfield != null">
+        researchField,
+      </if>
+      <if test="works != null">
+        works,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null">
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisorname != null">
+        #{supervisorname,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisorrank != null">
+        #{supervisorrank,jdbcType=VARCHAR},
+      </if>
+      <if test="researchfield != null">
+        #{researchfield,jdbcType=VARCHAR},
+      </if>
+      <if test="works != null">
+        #{works,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.evan.seprojrearend.po.User">
+    update user
+    <set>
+      <if test="username != null">
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null">
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisorname != null">
+        supervisorName = #{supervisorname,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisorrank != null">
+        supervisorRank = #{supervisorrank,jdbcType=VARCHAR},
+      </if>
+      <if test="researchfield != null">
+        researchField = #{researchfield,jdbcType=VARCHAR},
+      </if>
+      <if test="works != null">
+        works = #{works,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userId = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.evan.seprojrearend.po.User">
+    update user
+    set userName = #{username,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      school = #{school,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
+      supervisorName = #{supervisorname,jdbcType=VARCHAR},
+      supervisorRank = #{supervisorrank,jdbcType=VARCHAR},
+      researchField = #{researchfield,jdbcType=VARCHAR},
+      works = #{works,jdbcType=VARCHAR}
+    where userId = #{userid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.evan.seprojrearend.po.User">
+    <id column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    userid, username, mobile, email
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where userid = #{userid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where userid = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.evan.seprojrearend.po.User">
+    insert into user (userid, username, mobile, 
+      email)
+    values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.evan.seprojrearend.po.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.evan.seprojrearend.po.User">
+    update user
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userid = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.evan.seprojrearend.po.User">
+    update user
+    set username = #{username,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR}
+    where userid = #{userid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.evan.seprojrearend.po.User">
     <id column="userid" jdbcType="INTEGER" property="userid" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="mobile" jdbcType="VARCHAR" property="mobile" />

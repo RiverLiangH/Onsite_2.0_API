@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Onsite_2.0_API.iml" filepath="$PROJECT_DIR$/.idea/Onsite_2.0_API.iml" />
+      <module fileurl="file://$PROJECT_DIR$/se-proj-rear-end/se-proj-rear-end.iml" filepath="$PROJECT_DIR$/se-proj-rear-end/se-proj-rear-end.iml" />
     </modules>
   </component>
 </project>
