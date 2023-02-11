@@ -1,0 +1,34 @@
+package com.evan.seprojrearend.service;
+
+import com.alibaba.fastjson.JSONObject;
+import com.evan.seprojrearend.mapper.SceneMapper;
+import com.evan.seprojrearend.po.Scene;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.Map;
+@Service
+public class SceneService {
+
+    @Autowired
+    private SceneMapper sceneMapper;
+
+    public SceneService(SceneMapper sceneMapper) {
+        this.sceneMapper = sceneMapper;
+    }
+
+    public JSONObject findByPaging(Integer pageNum, Integer pageSize){
+
+        PageHelper.startPage(pageNum,pageSize);
+        Map param = new HashMap();
+        Page<Scene> data = sceneMapper.findByPaging(param);
+        JSONObject result = new JSONObject();
+        result.put("scene",data);
+        result.put("pages",data.getPages());
+        result.put("total",data.getTotal());
+        return result;
+    }
+}
