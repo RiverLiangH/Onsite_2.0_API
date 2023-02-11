@@ -1,29 +1,34 @@
-/**
- * Copyright (C), 2023-02-09
- * FileName: SceneService
- * Author:   Lv
- * Date:     2023/2/9 18:25
- * Description: 场景类的业务逻辑方法
- */
 package com.evan.seprojrearend.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.evan.seprojrearend.mapper.SceneMapper;
 import com.evan.seprojrearend.po.Scene;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+@Service
 public class SceneService {
+
     @Autowired
     private SceneMapper sceneMapper;
 
-    /**
-     * 获取所有场景并返回分页场景
-     * @param currentPage 当前页码
-     * @param pageSize 一页中包含的数据条数
-     * **/
-//    public Page<Scene> getSceneList(int currentPage, int pageSize){
-//        Page<Scene> scenePage = PageHelper.startPage(currentPage,pageSize).doSelectPage(() -> sceneMapper.selectAll());
-//        return scenePage;
-//    }
+    public SceneService(SceneMapper sceneMapper) {
+        this.sceneMapper = sceneMapper;
+    }
+
+    public JSONObject findByPaging(Integer pageNum, Integer pageSize){
+
+        PageHelper.startPage(pageNum,pageSize);
+        Map param = new HashMap();
+        Page<Scene> data = sceneMapper.findByPaging(param);
+        JSONObject result = new JSONObject();
+        result.put("scene",data);
+        result.put("pages",data.getPages());
+        result.put("total",data.getTotal());
+        return result;
+    }
 }

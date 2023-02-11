@@ -1,6 +1,9 @@
 package com.evan.seprojrearend.mapper;
 
 import com.evan.seprojrearend.po.Scene;
+import com.github.pagehelper.Page;
+
+import java.util.Map;
 
 import java.util.List;
 
@@ -12,6 +15,8 @@ public interface SceneMapper {
     int insertSelective(Scene record);
 
     Scene selectByPrimaryKey(String scenename);
+
+    Page<Scene> findByPaging(Map param);
 
     int updateByPrimaryKeySelective(Scene record);
 
