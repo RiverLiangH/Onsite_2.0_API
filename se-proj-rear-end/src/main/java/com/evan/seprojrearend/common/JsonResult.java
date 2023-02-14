@@ -9,7 +9,7 @@ public class JsonResult {
      * 正确时返回的信息
      */
     public static JsonResult isOk(Object data) {
-        return new JsonResult(200,data,"success");
+        return new JsonResult(20000,data,"success");
     }
 
     /**
