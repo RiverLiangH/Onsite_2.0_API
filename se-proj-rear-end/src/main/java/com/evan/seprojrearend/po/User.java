@@ -27,6 +27,8 @@ public class User {
 
     private String works;
 
+    private String name;
+
     public String getUserid() {
         return userid;
     }
@@ -129,5 +131,13 @@ public class User {
 
     public void setWorks(String works) {
         this.works = works == null ? null : works.trim();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 }

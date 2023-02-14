@@ -66,11 +66,11 @@ public class UserController {
      * **/
     @ResponseBody
     @PostMapping("sign_up")
-    public JsonResult signUp(String username, String mobile, String email, Integer age, String sex, String password, String school, String department, String supervisorname, String supervisorrank, String researchfield, String works){
+    public JsonResult signUp(String username, String mobile, String email, Integer age, String sex, String password, String school, String department, String supervisorname, String supervisorrank, String researchfield, String works, String name){
         String re = null;
         //re = userService.newUser(username, mobile, email, age, sex, password, school, department, supervisorname, supervisorrank, researchfield, works);
         try {
-            re = userService.newUser(username, mobile, email, age, sex, password, school, department, supervisorname, supervisorrank, researchfield, works);
+            re = userService.newUser(username, mobile, email, age, sex, password, school, department, supervisorname, supervisorrank, researchfield, works, name);
         }catch (Exception e){
             return JsonResult.isError(10001,"未知错误");
         }

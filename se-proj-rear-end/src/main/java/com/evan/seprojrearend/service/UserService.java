@@ -49,14 +49,14 @@ public class UserService {
     /**
      * 用户注册
      * **/
-    public String newUser(String username,String mobile,String email,Integer age,String sex,String password,String school,String department,String supervisorname,String supervisorrank,String researchfield,String works){
+    public String newUser(String username,String mobile,String email,Integer age,String sex,String password,String school,String department,String supervisorname,String supervisorrank,String researchfield,String works,String name){
         User newUser = new User();
         long time=new Date().getTime();
         System.out.println(""+time);
         Date dates=new Date(time);
         SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddhhmmss");
         String times=sdf.format(dates);
-        
+
         newUser.setUserid(times);
         newUser.setUsername(username);
         newUser.setMobile(mobile);
@@ -70,6 +70,7 @@ public class UserService {
         newUser.setSupervisorrank(supervisorrank);
         newUser.setResearchfield(researchfield);
         newUser.setWorks(works);
+        newUser.setName(name);
         if(userMapper.insert(newUser)==1)
             return "True";
         else
