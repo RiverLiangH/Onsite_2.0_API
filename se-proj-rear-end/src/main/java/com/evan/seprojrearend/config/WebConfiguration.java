@@ -64,6 +64,8 @@ public class WebConfiguration implements WebMvcConfigurer {
         excludePath.add("/swagger-resources/**");     //swagger
         excludePath.add("/v2/api-docs");     //swagger
         excludePath.add("/webjars/**");     //swagger
+        excludePath.add("/test");
+        excludePath.add("/scene/find_by_paging");
 //        excludePath.add("/static/**");  //静态资源
 //        excludePath.add("/assets/**");  //静态资源
         registry.addInterceptor(tokenInterceptor)

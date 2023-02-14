@@ -15,13 +15,14 @@
     <result column="supervisorRank" jdbcType="VARCHAR" property="supervisorrank" />
     <result column="researchField" jdbcType="VARCHAR" property="researchfield" />
     <result column="works" jdbcType="VARCHAR" property="works" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
   </resultMap>
   <sql id="Base_Column_List">
-    userId, userName, mobile, email, age, sex, password, school, department, supervisorName, 
-    supervisorRank, researchField, works
+    userId, userName, mobile, email, age, sex, password, school, department, supervisorName,
+    supervisorRank, researchField, works, name
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from user
     where userId = #{userid,jdbcType=VARCHAR}
@@ -38,15 +39,15 @@
     where userId = #{userid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.evan.seprojrearend.po.User">
-    insert into user (userId, userName, mobile, 
-      email, age, sex, password, 
-      school, department, supervisorName, 
-      supervisorRank, researchField, works
+    insert into user (userId, userName, mobile,
+      email, age, sex, password,
+      school, department, supervisorName,
+      supervisorRank, researchField, works, name
       )
-    values (#{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{sex,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{school,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, #{supervisorname,jdbcType=VARCHAR}, 
-      #{supervisorrank,jdbcType=VARCHAR}, #{researchfield,jdbcType=VARCHAR}, #{works,jdbcType=VARCHAR}
+    values (#{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR},
+      #{email,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{sex,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{school,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, #{supervisorname,jdbcType=VARCHAR},
+      #{supervisorrank,jdbcType=VARCHAR}, #{researchfield,jdbcType=VARCHAR}, #{works,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.evan.seprojrearend.po.User">
