@@ -57,7 +57,7 @@ public class UserController {
         }catch (Exception e){
             return JsonResult.isError(10001,"未知错误");
         }
-        return JsonResult.isOk(message);
+        return JsonResult.isOk(re);
     }
 
 
