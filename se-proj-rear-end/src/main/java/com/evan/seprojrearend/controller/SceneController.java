@@ -31,11 +31,11 @@ public class SceneController {
     @ResponseBody
     @ApiOperation(value = "分页查询")
     @GetMapping("find_by_paging")
-    public JsonResult findByPaging(Integer pageNum, Integer pageSize){
+    public JsonResult findByPaging(String source, String scenetype, String risktype, String roadtype, Integer lanenum, Integer pageNum, Integer pageSize){
         String re = null;
         Map<String, Object> message = new HashMap<>();  // 前后端传递消息
         try {
-            re = String.valueOf(sceneService.findByPaging(pageNum, pageSize));
+            re = String.valueOf(sceneService.findByPaging(source, scenetype, risktype, roadtype, lanenum, pageNum, pageSize));
             message.put("scene", re);
         }catch (Exception e){
             return JsonResult.isError(10001,"未知错误");

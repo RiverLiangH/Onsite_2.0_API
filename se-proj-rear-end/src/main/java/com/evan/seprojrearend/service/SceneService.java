@@ -20,10 +20,15 @@ public class SceneService {
         this.sceneMapper = sceneMapper;
     }
 
-    public JSONObject findByPaging(Integer pageNum, Integer pageSize){
+    public JSONObject findByPaging(String source, String scenetype, String risktype, String roadtype, Integer lanenum, Integer pageNum, Integer pageSize){
 
         PageHelper.startPage(pageNum,pageSize);
         Map param = new HashMap();
+        param.put("source",source);
+        param.put("scenetype",scenetype);
+        param.put("risktype",risktype);
+        param.put("roadtype",roadtype);
+        param.put("lanenum",lanenum);
         Page<Scene> data = sceneMapper.findByPaging(param);
         JSONObject result = new JSONObject();
         result.put("scene",data);

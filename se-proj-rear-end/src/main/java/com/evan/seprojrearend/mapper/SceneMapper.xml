@@ -24,6 +24,22 @@
     select
     *
     from scene
+    where 1=1
+    <if test="source != null">
+      and source = #{source}
+    </if>
+    <if test="scenetype != null">
+      and scenetype = #{scenetype}
+    </if>
+    <if test="risktype != null">
+      and risktype = #{risktype}
+    </if>
+    <if test="roadtype != null">
+      and roadtype = #{roadtype}
+    </if>
+    <if test="lanenum != null">
+      and lanenum = #{lanenum}
+    </if>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from scene
