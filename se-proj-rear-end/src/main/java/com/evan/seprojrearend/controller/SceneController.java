@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Api(tags="场景模块")
 @RestController
 @CrossOrigin
@@ -23,20 +26,21 @@ public class SceneController {
     }
 
     /**
-     * 用户登录验证
+     * 场景分页查询
      * **/
     @ResponseBody
     @ApiOperation(value = "分页查询")
     @GetMapping("find_by_paging")
     public JsonResult findByPaging(Integer pageNum, Integer pageSize){
         String re = null;
-//        re = String.valueOf(sceneService.findByPaging(pageNum, pageSize));
+        Map<String, Object> message = new HashMap<>();  // 前后端传递消息
         try {
             re = String.valueOf(sceneService.findByPaging(pageNum, pageSize));
+            message.put("scene", re);
         }catch (Exception e){
             return JsonResult.isError(10001,"未知错误");
         }
-        return JsonResult.isOk(re);
+        return JsonResult.isOk(message);
     }
 
 }

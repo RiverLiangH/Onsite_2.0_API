@@ -1,15 +1,17 @@
 package com.evan.seprojrearend.common;
 
+import java.util.Map;
+
 public class JsonResult {
     private Integer code;//状态码
-    private Object data;//数据
+    private Map<String,Object> data;//数据（字典形式）
     private String msg;//信息
 
     /**
      * 正确时返回的信息
      */
-    public static JsonResult isOk(Object data) {
-        return new JsonResult(200,data,"success");
+    public static JsonResult isOk(Map<String,Object> data) {
+        return new JsonResult(20000,data,"success");
     }
 
     /**
@@ -22,7 +24,7 @@ public class JsonResult {
     public JsonResult() {
         super();
     }
-    public JsonResult(Integer code, Object data, String msg) {
+    public JsonResult(Integer code, Map<String,Object> data, String msg) {
         super();
         this.code = code;
         this.data = data;
@@ -41,7 +43,7 @@ public class JsonResult {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(Map<String,Object> data) {
         this.data = data;
     }
 

@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Api(tags="用户信息模块")
 @RestController
@@ -41,8 +42,8 @@ public class UserController {
     @PostMapping("login")
     public JsonResult loginValidate(String username, String password){
         String re = null;
-        String message = null;
         String token = null;
+        Map<String, Object> message = new HashMap<>();  // 前后端传递消息
         //re = userService.isInUser(username, password);
         try {
             re = userService.isInUser(username, password);
@@ -53,11 +54,12 @@ public class UserController {
                 user.setPassword(password);
                 token= TokenUtils.sign(user);    //登录验证
             }
-            message = re + ":" +token;
+            message.put("token", token);
+            message.put("name", username);
         }catch (Exception e){
             return JsonResult.isError(10001,"未知错误");
         }
-        return JsonResult.isOk(re);
+        return JsonResult.isOk(message);
     }
 
 
@@ -67,14 +69,15 @@ public class UserController {
     @ResponseBody
     @PostMapping("sign_up")
     public JsonResult signUp(String username, String mobile, String email, Integer age, String sex, String password, String school, String department, String supervisorname, String supervisorrank, String researchfield, String works, String name){
+        Map<String, Object> message = new HashMap<>();  // 前后端传递消息
         String re = null;
-        //re = userService.newUser(username, mobile, email, age, sex, password, school, department, supervisorname, supervisorrank, researchfield, works);
         try {
             re = userService.newUser(username, mobile, email, age, sex, password, school, department, supervisorname, supervisorrank, researchfield, works, name);
+            message.put("state", re);
         }catch (Exception e){
             return JsonResult.isError(10001,"未知错误");
         }
-        return JsonResult.isOk(re);
+        return JsonResult.isOk(message);
     }
 
 }
