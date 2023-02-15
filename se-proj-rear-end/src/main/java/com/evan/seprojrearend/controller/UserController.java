@@ -43,20 +43,28 @@ public class UserController {
         String re = null;
         String message = null;
         String token = null;
-        //re = userService.isInUser(username, password);
-        try {
-            re = userService.isInUser(username, password);
-            //用户信息存在
-            if(re.equals("True")){
-                User user = new User();
-                user.setUsername(username);
-                user.setPassword(password);
-                token= TokenUtils.sign(user);    //登录验证
-            }
-            message = re + ":" +token;
-        }catch (Exception e){
-            return JsonResult.isError(10001,"未知错误");
+        re = userService.isInUser(username, password);
+        //用户信息存在
+        if(re.equals("True")){
+            User user = new User();
+            user.setUsername(username);
+            user.setPassword(password);
+            token= TokenUtils.sign(user);    //登录验证
         }
+        message = re + ":" +token;
+//        try {
+//            re = userService.isInUser(username, password);
+//            //用户信息存在
+//            if(re.equals("True")){
+//                User user = new User();
+//                user.setUsername(username);
+//                user.setPassword(password);
+//                token= TokenUtils.sign(user);    //登录验证
+//            }
+//            message = re + ":" +token;
+//        }catch (Exception e){
+//            return JsonResult.isError(10001,"未知错误");
+//        }
         return JsonResult.isOk(re);
     }
 
