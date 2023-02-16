@@ -91,7 +91,7 @@ public class UserController {
      * 查询单个用户信息
      * **/
     @ResponseBody
-    @PostMapping("check_msg")
+    @GetMapping("check_msg")
     public JsonResult checkMeg(String token){
         Map<String, Object> message = new HashMap<>();  // 前后端传递消息
         String re = null;
