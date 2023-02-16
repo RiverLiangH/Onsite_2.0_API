@@ -27,12 +27,20 @@
     from user
     where userId = #{userid,jdbcType=VARCHAR}
   </select>
+<!--  登录验证 -->
   <select id="selectByName" resultType="com.alibaba.fastjson.JSONObject">
     select *
     from user
     where
     username = #{username,jdbcType=VARCHAR} and
     password = #{password,jdbcType=VARCHAR}
+  </select>
+  <!--  查询个人信息 -->
+  <select id="selectByUsername" resultType="com.alibaba.fastjson.JSONObject">
+    select *
+    from user
+    where
+    username = #{username,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from user

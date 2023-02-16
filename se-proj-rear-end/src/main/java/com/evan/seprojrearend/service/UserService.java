@@ -76,4 +76,11 @@ public class UserService {
         else
             return "False";
     }
+
+    /**
+     * 查询用户信息
+     * **/
+    public String checkMsg(String username){
+        return userMapper.selectByUsername(username).toString();
+    }
 }

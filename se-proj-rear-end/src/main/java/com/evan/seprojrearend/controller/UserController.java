@@ -80,4 +80,23 @@ public class UserController {
         return JsonResult.isOk(message);
     }
 
+    /**
+     * 查询单个用户信息
+     * **/
+    @ResponseBody
+    @PostMapping("check_msg")
+    public JsonResult checkMeg(String username){
+        Map<String, Object> message = new HashMap<>();  // 前后端传递消息
+        String re = null;
+//        re = userService.checkMsg(username);
+//        message.put("message", re);
+        try {
+            re = userService.checkMsg(username);
+            message.put("message", re);
+        }catch (Exception e){
+            return JsonResult.isError(10001,"未知错误");
+        }
+        return JsonResult.isOk(message);
+    }
+
 }
