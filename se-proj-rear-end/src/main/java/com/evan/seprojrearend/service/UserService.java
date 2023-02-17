@@ -8,6 +8,7 @@
 package com.evan.seprojrearend.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.evan.seprojrearend.common.JsonResult;
 import com.evan.seprojrearend.mapper.UserMapper;
 import com.evan.seprojrearend.po.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,7 +81,8 @@ public class UserService {
     /**
      * 查询用户信息
      * **/
-    public String checkMsg(String username){
-        return userMapper.selectByUsername(username).toString();
+    public JSONObject checkMsg(String username){
+//        System.out.println(userMapper.selectByUsername(username));
+        return userMapper.selectByUsername(username);
     }
 }

@@ -7,6 +7,7 @@
  */
 package com.evan.seprojrearend.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -16,6 +17,7 @@ import com.evan.seprojrearend.po.User;
 import com.evan.seprojrearend.service.UserService;
 import com.evan.seprojrearend.utils.TokenUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.google.gson.JsonObject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -24,6 +26,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
@@ -92,9 +95,11 @@ public class UserController {
      * **/
     @ResponseBody
     @GetMapping("check_msg")
-    public JsonResult checkMeg(String token){
+    public JsonResult checkMeg(HttpServletRequest request){
+        //在请求头里获取token
+        String token = request.getHeader("token");
         Map<String, Object> message = new HashMap<>();  // 前后端传递消息
-        String re = null;
+        JSONObject re = null;
 //        re = userService.checkMsg(username);
 //        message.put("message", re);
         //创建token验证器

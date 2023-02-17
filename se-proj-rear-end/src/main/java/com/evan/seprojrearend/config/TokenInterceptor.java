@@ -18,7 +18,12 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class TokenInterceptor implements HandlerInterceptor {
     @Override
+    /**
+     * token拦截器，对请求进行token验证
+     * **/
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        System.out.println(request.getHeader("token"));    // test
+
         if (request.getMethod().equals("OPTIONS")) {
             //跨域请求会首先发一个option请求，直接返回正常状态并通过拦截器
             response.setStatus(HttpServletResponse.SC_OK);  //200

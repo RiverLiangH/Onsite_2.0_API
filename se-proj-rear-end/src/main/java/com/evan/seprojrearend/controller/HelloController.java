@@ -5,8 +5,11 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Api(tags="HelloController接口测试")
 @RestController
@@ -17,4 +20,10 @@ public class HelloController {
     public String hello(){
         return "hello world";
     }
+
+    @GetMapping("token")
+    public String getToken(HttpServletRequest request){
+        return request.getHeader("token");
+    }
+
 }

@@ -16,7 +16,7 @@ public interface UserMapper {
     User selectByPrimaryKey(String userid);
 
     //查询个人信息
-    List<JSONObject> selectByUsername(@Param("username") String username);
+    JSONObject selectByUsername(@Param("username") String username);
 
     //登录验证
     List<JSONObject> selectByName(@Param("username") String username, @Param("password") String password);
