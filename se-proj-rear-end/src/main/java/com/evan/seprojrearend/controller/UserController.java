@@ -119,16 +119,16 @@ public class UserController {
     /**
      * 修改单个用户信息
      * **/
-    @ApiOperation(value="修改单个用户信息",notes="用户名不能改（^_^)")
+    @ApiOperation(value="修改单个用户信息",notes="用户名能改了（^_^)")
     @ResponseBody
     @PostMapping("modify_msg")
-    public JsonResult modifyMsg(String username, String mobile, String email, Integer age, String sex, String password, String school, String department, String supervisorname, String supervisorrank, String researchfield, String works, String name){
+    public JsonResult modifyMsg(String userid, String username, String mobile, String email, Integer age, String sex, String password, String school, String department, String supervisorname, String supervisorrank, String researchfield, String works, String name){
         Map<String, Object> message = new HashMap<>();  // 前后端传递消息
         String re = null;
 //        re = userService.changeUserMsg(username, mobile, email, age, sex, password, school, department, supervisorname, supervisorrank, researchfield, works, name);
 //        message.put("state", re);
         try {
-            re = userService.changeUserMsg(username, mobile, email, age, sex, password, school, department, supervisorname, supervisorrank, researchfield, works, name);
+            re = userService.changeUserMsg(userid, username, mobile, email, age, sex, password, school, department, supervisorname, supervisorrank, researchfield, works, name);
             message.put("state", re);
         }catch (Exception e){
             return JsonResult.isError(10001,"未知错误");
