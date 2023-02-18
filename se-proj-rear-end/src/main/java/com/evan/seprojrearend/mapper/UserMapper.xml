@@ -27,6 +27,13 @@
     from user
     where userId = #{userid,jdbcType=VARCHAR}
   </select>
+  <!--  修改个人信息 -->
+  <select id="selectByUname" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select distinct
+    <include refid="Base_Column_List" />
+    from user
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
 <!--  登录验证 -->
   <select id="selectByName" resultType="com.alibaba.fastjson.JSONObject">
     select *

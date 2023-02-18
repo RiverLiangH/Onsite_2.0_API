@@ -15,6 +15,9 @@ public interface UserMapper {
 
     User selectByPrimaryKey(String userid);
 
+    //修改个人信息
+    User selectByUname(@Param("username")String username);
+
     //查询个人信息
     JSONObject selectByUsername(@Param("username") String username);
 
