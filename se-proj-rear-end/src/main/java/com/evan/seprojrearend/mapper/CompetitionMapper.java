@@ -1,17 +1,13 @@
 package com.evan.seprojrearend.mapper;
 
+import com.alibaba.fastjson.JSONObject;
 import com.evan.seprojrearend.po.Competition;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface CompetitionMapper {
-    int deleteByPrimaryKey(String competitionid);
 
-    int insert(Competition record);
-
-    int insertSelective(Competition record);
-
-    Competition selectByPrimaryKey(String competitionid);
-
-    int updateByPrimaryKeySelective(Competition record);
-
-    int updateByPrimaryKey(Competition record);
+    //根据比赛名称获取比赛信息
+    JSONObject selectByName(@Param("competitionname") String competitionname);
 }
