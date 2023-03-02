@@ -17,12 +17,14 @@ import com.evan.seprojrearend.common.JsonResult;
 import com.evan.seprojrearend.service.CompetitionService;
 import com.evan.seprojrearend.service.SubmitService;
 import com.evan.seprojrearend.service.UserService;
+import com.google.gson.JsonObject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,7 +36,9 @@ public class SubmitController {
 
     @Autowired
     private SubmitService submitService;
+    @Autowired
     private UserService userService;
+    @Autowired
     private CompetitionService competitionService;
 
     //密钥
@@ -46,19 +50,24 @@ public class SubmitController {
     @ApiOperation(value="用户进行比赛登记")
     @ResponseBody
     @PostMapping("enter")
-    public JsonResult enter(String competitionName, HttpServletRequest request){
+    public JsonResult enter(String competitionName, String dockerId, HttpServletRequest request){
         //在请求头里获取token
         String token = request.getHeader("token");
         Map<String, Object> message = new HashMap<>();  // 前后端传递消息
-        JSONObject re = null;
+        JSONObject user = null;
+        JSONObject competition = null;
         //创建token验证器
         JWTVerifier jwtVerifier= JWT.require(Algorithm.HMAC256(TOKEN_SECRET)).withIssuer("auth0").build();
         DecodedJWT decodedJWT=jwtVerifier.verify(token);
         String username = decodedJWT.getClaim("username").asString();
         System.out.println(username);
+
         try {
-            re = userService.checkMsg(username);
-            System.out.println(re);
+            user = userService.checkMsg(username);  // 获取用户信息
+            competition = competitionService.getCompetitionInfo(competitionName);   // 获取比赛信息
+            String userid = user.getString("userId");
+            String competitionid = competition.getString("competitionId");
+            submitService.newSubmit(userid,competitionid,dockerId);
 
         }catch (Exception e){
             return JsonResult.isError(10001,"未知错误");

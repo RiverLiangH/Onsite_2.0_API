@@ -11,6 +11,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.evan.seprojrearend.common.JsonResult;
 import com.evan.seprojrearend.mapper.UserMapper;
 import com.evan.seprojrearend.po.User;
+import com.google.gson.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

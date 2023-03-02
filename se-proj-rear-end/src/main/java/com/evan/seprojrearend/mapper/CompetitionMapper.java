@@ -2,6 +2,7 @@ package com.evan.seprojrearend.mapper;
 
 import com.alibaba.fastjson.JSONObject;
 import com.evan.seprojrearend.po.Competition;
+import com.google.gson.JsonObject;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

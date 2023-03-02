@@ -10,7 +10,7 @@
     <result column="score" jdbcType="REAL" property="score" />
   </resultMap>
   <sql id="Base_Column_List">
-    submitId, submitterId, competitionId, submitTime, testTime, score, dockerId
+    submitId, submitterId, competitionId, submitTime, testTime, score, dockerId, paperType, resultLink
   </sql>
 <!--  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">-->
 <!--    select-->

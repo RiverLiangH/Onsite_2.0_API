@@ -10,6 +10,7 @@ package com.evan.seprojrearend.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.evan.seprojrearend.common.JsonResult;
 import com.evan.seprojrearend.service.CompetitionService;
+import com.google.gson.JsonObject;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

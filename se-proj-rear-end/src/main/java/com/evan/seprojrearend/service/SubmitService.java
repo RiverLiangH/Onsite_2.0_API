@@ -25,7 +25,7 @@ public class SubmitService {
     /**
      * 用户进行比赛登记
      * **/
-    public String newSubmit(String submitterid, String competitionid){
+    public String newSubmit(String submitterid, String competitionid, String dockerid){
         Submit newSubmit = new Submit();
         long time=new Date().getTime();
         System.out.println(""+time);
@@ -33,9 +33,11 @@ public class SubmitService {
         SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddhhmmss");
         String times=sdf.format(dates);
 
-        newSubmit.setSubmitid('c'+times);
+        newSubmit.setSubmitid("s_"+times+"_"+submitterid);
         newSubmit.setSubmitterid(submitterid);
         newSubmit.setCompetitionid(competitionid);
+        newSubmit.setDockerid(dockerid);
+        newSubmit.setSubmittime(dates);
 
         if(submitMapper.insert(newSubmit)==1)
             return "True";

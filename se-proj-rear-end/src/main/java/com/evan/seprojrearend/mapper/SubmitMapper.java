@@ -7,6 +7,8 @@ public interface SubmitMapper {
 
     int insert(Submit record);
 
+//    int updateByPrimaryKey(Submit record);
+
 //    int deleteByPrimaryKey(String submitid);
 //
 //    int insertSelective(Submit record);
@@ -15,6 +17,5 @@ public interface SubmitMapper {
 //
 //    int updateByPrimaryKeySelective(Submit record);
 //
-//    int updateByPrimaryKey(Submit record);
 
 }
