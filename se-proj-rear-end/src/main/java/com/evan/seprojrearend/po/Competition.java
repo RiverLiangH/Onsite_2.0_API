@@ -15,8 +15,6 @@ public class Competition {
 
     private String sponsor;
 
-    private Integer participants;
-
     private String status;
     /*competitionid*/
     public String getCompetitionid() {
@@ -65,14 +63,6 @@ public class Competition {
 
     public void setSponsor(String sponsor) {
         this.sponsor = sponsor == null ? null : sponsor.trim();
-    }
-    /*participants*/
-    public Integer getParticipants() {
-        return participants;
-    }
-
-    public void setParticipants(Integer participants) {
-        this.participants = participants;
     }
     /*status*/
     public String getStatus() {

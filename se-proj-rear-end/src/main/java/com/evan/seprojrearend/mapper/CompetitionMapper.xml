@@ -8,7 +8,7 @@
     <result column="duration" jdbcType="TIME" property="duration" />
   </resultMap>
   <sql id="Base_Column_List">
-    competitionId, competitionName, startTime, endTime, description, sponsor, participants, status
+    competitionId, competitionName, startTime, endTime, description, sponsor, status
   </sql>
   <!--  根据比赛名称获取比赛信息 -->
   <select id="selectByName" resultType="com.alibaba.fastjson.JSONObject">
