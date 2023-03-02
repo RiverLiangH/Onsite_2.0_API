@@ -112,4 +112,17 @@ public class UserService {
         else
             return "False";
     }
+
+    /**
+     * 修改密码
+     * **/
+    public String modifyPassword(String username, String password){
+        User thisUser = userMapper.selectByUname(username);
+        thisUser.setPassword(password);
+        if(userMapper.updateByPrimaryKeySelective(thisUser)==1)
+            return "True";
+        else
+            return "False";
+    }
+
 }
