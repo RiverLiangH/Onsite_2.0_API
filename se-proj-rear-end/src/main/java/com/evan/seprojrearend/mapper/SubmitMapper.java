@@ -1,17 +1,21 @@
 package com.evan.seprojrearend.mapper;
 
 import com.evan.seprojrearend.po.Submit;
+import org.apache.ibatis.annotations.Param;
 
 public interface SubmitMapper {
-    int deleteByPrimaryKey(String submitid);
 
     int insert(Submit record);
 
-    int insertSelective(Submit record);
+//    int updateByPrimaryKey(Submit record);
 
-    Submit selectByPrimaryKey(String submitid);
+//    int deleteByPrimaryKey(String submitid);
+//
+//    int insertSelective(Submit record);
+//
+//    Submit selectByPrimaryKey(String submitid);
+//
+//    int updateByPrimaryKeySelective(Submit record);
+//
 
-    int updateByPrimaryKeySelective(Submit record);
-
-    int updateByPrimaryKey(Submit record);
 }

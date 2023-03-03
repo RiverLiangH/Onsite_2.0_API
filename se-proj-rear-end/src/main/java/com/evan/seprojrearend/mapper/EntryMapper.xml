@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.evan.seprojrearend.mapper.EntryMapper">
+    <resultMap id="BaseResultMap" type="com.evan.seprojrearend.po.Entry">
+        <id column="entryId" jdbcType="VARCHAR" property="entryid" />
+        <result column="participantId" jdbcType="VARCHAR" property="participantid" />
+        <result column="competitionId" jdbcType="VARCHAR" property="competitionid" />
+        <result column="entryTime" jdbcType="TIMESTAMP" property="entrytime" />
+    </resultMap>
+    <sql id="Base_Column_List">
+    entryId, participantId, competitionId, entryTime
+  </sql>
+    <!--用户首次参加比赛时插入参赛记录-->
+    <insert id="insert" parameterType="com.evan.seprojrearend.po.Entry">
+    insert into entry (entryId, participantId, competitionId, entryTime
+      )
+    values (#{entryid,jdbcType=VARCHAR}, #{participantid,jdbcType=VARCHAR}, #{competitionid,jdbcType=VARCHAR},
+      #{entrytime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+    <!--通过用户ID和比赛ID查找参赛记录-->
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select *
+        from entry
+        where participantId = #{participantid,jdbcType=VARCHAR} and competitionId = #{competitionid,jdbcType=VARCHAR}
+  </select>
+</mapper>

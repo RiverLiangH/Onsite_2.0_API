@@ -15,7 +15,7 @@
         </commentGenerator>
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://bj-cynosdbmysql-grp-959klrzq.sql.tencentcdb.com:25895/onsite?useSSL=false"
+                        connectionURL="jdbc:mysql://sh-cynosdbmysql-grp-lqu1mnle.sql.tencentcdb.com:23574/onsite?useSSL=false"
                         userId="root"
                         password="Ljq20020717">
             <property name="nullCatalogMeansCurrent" value="true"/>

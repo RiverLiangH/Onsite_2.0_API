@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.evan.seprojrearend.mapper.CompetitionMapper">
+  <resultMap id="BaseResultMap" type="com.evan.seprojrearend.po.Competition">
+    <id column="competitionId" jdbcType="VARCHAR" property="competitionid" />
+    <result column="competitionName" jdbcType="VARCHAR" property="competitionname" />
+    <result column="startTime" jdbcType="TIMESTAMP" property="starttime" />
+    <result column="duration" jdbcType="TIME" property="duration" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    competitionId, competitionName, startTime, endTime, description, sponsor, status
+  </sql>
+  <!--  根据比赛名称获取比赛信息 -->
+  <select id="selectByName" resultType="com.alibaba.fastjson.JSONObject">
+    select *
+    from competition
+    where
+    competitionName = #{competitionname,jdbcType=VARCHAR}
+  </select>
+</mapper>
