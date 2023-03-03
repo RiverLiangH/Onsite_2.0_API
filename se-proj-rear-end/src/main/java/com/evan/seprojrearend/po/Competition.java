@@ -16,6 +16,8 @@ public class Competition {
     private String sponsor;
 
     private String status;
+
+    private String submissiontype;
     /*competitionid*/
     public String getCompetitionid() {
         return competitionid;
@@ -71,5 +73,13 @@ public class Competition {
 
     public void setStatus(String status) {
         this.status = status == null ? null : status.trim();
+    }
+    /*submissiontype*/
+    public String getSubmissiontype() {
+        return submissiontype;
+    }
+
+    public void setSubmissiontype(String submissiontype) {
+        this.submissiontype = submissiontype == null ? null : submissiontype.trim();
     }
 }

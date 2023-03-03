@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Api(tags="比赛信息模块")
@@ -36,6 +37,24 @@ public class CompetitionController {
         JSONObject re = null;
         try {
             re = competitionService.getCompetitionInfo(competitionName);
+            message.put("competition", re);
+        }catch (Exception e){
+            return JsonResult.isError(10001,"未知错误");
+        }
+        return JsonResult.isOk(message);
+    }
+
+    /**
+     * 获取全部比赛信息
+     * **/
+    @ResponseBody
+    @GetMapping("all_competitions")
+    public JsonResult getCompetitions(){
+        Map<String, Object> message = new HashMap<>();  // 前后端传递消息
+        List<JSONObject> re = null;
+        try {
+            System.out.println("controller没问题");
+            re = competitionService.getCompetitions();
             message.put("competition", re);
         }catch (Exception e){
             return JsonResult.isError(10001,"未知错误");
