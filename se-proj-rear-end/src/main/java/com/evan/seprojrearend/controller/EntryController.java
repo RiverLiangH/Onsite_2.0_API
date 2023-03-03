@@ -1,12 +1,11 @@
 /**
- * Copyright (C), 2023-03-02
- * FileName: SubmitController
+ * Copyright (C), 2023-03-03
+ * FileName: EntryController
  * Author:   Lv
- * Date:     2023/3/2 11:01
- * Description: Submit控制类
+ * Date:     2023/3/3 8:47
+ * Description: entry controller
  */
 package com.evan.seprojrearend.controller;
-
 
 import com.alibaba.fastjson.JSONObject;
 import com.auth0.jwt.JWT;
@@ -15,27 +14,25 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.evan.seprojrearend.common.JsonResult;
 import com.evan.seprojrearend.service.CompetitionService;
-import com.evan.seprojrearend.service.SubmitService;
+import com.evan.seprojrearend.service.EntryService;
 import com.evan.seprojrearend.service.UserService;
-import com.google.gson.JsonObject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-@Api(tags="比赛提交模块")
+@Api(tags="用户参赛模块")
 @RestController
 @CrossOrigin
-@RequestMapping("/submit")
-public class SubmitController {
+@RequestMapping("/entry")
+public class EntryController {
 
     @Autowired
-    private SubmitService submitService;
+    private EntryService entryService;
     @Autowired
     private UserService userService;
     @Autowired
@@ -45,12 +42,12 @@ public class SubmitController {
     private static final String TOKEN_SECRET="ljdyaishijin**3nkjnj??";
 
     /**
-     * 用户提交比赛作品
+     * 用户进行比赛登记
      * **/
-    @ApiOperation(value="用户提交比赛作品")
+    @ApiOperation(value="用户进行比赛登记")
     @ResponseBody
-    @PostMapping("enter")
-    public JsonResult enter(String competitionName, String dockerId, HttpServletRequest request){
+    @PostMapping("register")
+    public JsonResult enterContest(String competitionName, HttpServletRequest request){
         //在请求头里获取token
         String token = request.getHeader("token");
         Map<String, Object> message = new HashMap<>();  // 前后端传递消息
@@ -67,12 +64,7 @@ public class SubmitController {
             competition = competitionService.getCompetitionInfo(competitionName);   // 获取比赛信息
             String userid = user.getString("userId");
             String competitionid = competition.getString("competitionId");
-            System.out.println("userid:"+userid);
-            System.out.println("competitionid:"+competitionid);
-
-            String result = submitService.newSubmit(userid,competitionid,dockerId);
-//            if(result.equals("False"))
-//                return JsonResult.isError(10001,"未参赛不允许进行提交");
+            entryService.newSubmit(userid,competitionid);
 
         }catch (Exception e){
             return JsonResult.isError(10001,"未知错误");

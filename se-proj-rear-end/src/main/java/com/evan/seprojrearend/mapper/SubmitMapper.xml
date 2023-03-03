@@ -8,6 +8,9 @@
     <result column="submitTime" jdbcType="TIMESTAMP" property="submittime" />
     <result column="testTime" jdbcType="TIMESTAMP" property="testtime" />
     <result column="score" jdbcType="REAL" property="score" />
+    <result column="dockerId" jdbcType="VARCHAR" property="dockerId" />
+    <result column="paperType" jdbcType="VARCHAR" property="paperType" />
+    <result column="resultLink" jdbcType="VARCHAR" property="resultLink" />
   </resultMap>
   <sql id="Base_Column_List">
     submitId, submitterId, competitionId, submitTime, testTime, score, dockerId, paperType, resultLink
@@ -22,7 +25,7 @@
 <!--    delete from submit-->
 <!--    where submitId = #{submitid,jdbcType=VARCHAR}-->
 <!--  </delete>-->
-  <!--用户首次参加比赛时插入参赛记录-->
+  <!--用户参赛后提交作品-->
   <insert id="insert" parameterType="com.evan.seprojrearend.po.Submit">
     insert into submit (submitId, submitterId, competitionId,
       submitTime, testTime, score, dockerId, paperType, resultLink
