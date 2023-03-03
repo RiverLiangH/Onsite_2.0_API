@@ -18,6 +18,8 @@ public class Competition {
     private String status;
 
     private String submissiontype;
+
+    private String remark;
     /*competitionid*/
     public String getCompetitionid() {
         return competitionid;
@@ -81,5 +83,13 @@ public class Competition {
 
     public void setSubmissiontype(String submissiontype) {
         this.submissiontype = submissiontype == null ? null : submissiontype.trim();
+    }
+    /*remark*/
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
     }
 }
