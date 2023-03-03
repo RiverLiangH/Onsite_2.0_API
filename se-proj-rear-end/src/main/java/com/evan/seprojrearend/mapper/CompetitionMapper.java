@@ -11,4 +11,6 @@ public interface CompetitionMapper {
 
     //根据比赛名称获取比赛信息
     JSONObject selectByName(@Param("competitionname") String competitionname);
+
+    List<JSONObject> selectAll();
 }

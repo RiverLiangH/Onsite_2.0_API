@@ -8,9 +8,9 @@
     <result column="submitTime" jdbcType="TIMESTAMP" property="submittime" />
     <result column="testTime" jdbcType="TIMESTAMP" property="testtime" />
     <result column="score" jdbcType="REAL" property="score" />
-    <result column="dockerId" jdbcType="VARCHAR" property="dockerId" />
-    <result column="paperType" jdbcType="VARCHAR" property="paperType" />
-    <result column="resultLink" jdbcType="VARCHAR" property="resultLink" />
+    <result column="dockerId" jdbcType="VARCHAR" property="dockerid" />
+    <result column="paperType" jdbcType="VARCHAR" property="papertype" />
+    <result column="resultLink" jdbcType="VARCHAR" property="resultlink" />
   </resultMap>
   <sql id="Base_Column_List">
     submitId, submitterId, competitionId, submitTime, testTime, score, dockerId, paperType, resultLink
@@ -35,6 +35,14 @@
       #{papertype,jdbcType=VARCHAR}, #{resultlink,jdbcType=VARCHAR}
       )
   </insert>
+
+  <select id="findByPaging" resultMap="BaseResultMap">
+    select
+    *
+    from submit
+    where score is not null
+    order by score
+  </select>
 <!--  <insert id="insertSelective" parameterType="com.evan.seprojrearend.po.Submit">-->
 <!--    insert into submit-->
 <!--    <trim prefix="(" suffix=")" suffixOverrides=",">-->

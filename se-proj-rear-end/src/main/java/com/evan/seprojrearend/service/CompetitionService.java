@@ -14,6 +14,8 @@ import com.google.gson.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CompetitionService {
 
@@ -25,5 +27,13 @@ public class CompetitionService {
      * **/
     public JSONObject getCompetitionInfo(String competitionname){
         return competitionMapper.selectByName(competitionname);
+    }
+
+    /**
+     * 获取全部比赛信息
+     * **/
+    public List<JSONObject> getCompetitions(){
+        System.out.println("service没问题");
+        return competitionMapper.selectAll();
     }
 }

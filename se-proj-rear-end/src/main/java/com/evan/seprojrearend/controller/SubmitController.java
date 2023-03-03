@@ -79,4 +79,23 @@ public class SubmitController {
         }
         return JsonResult.isOk(message);
     }
+
+    /**
+     * 获取全部提交信息（按成绩排序）
+     * **/
+    @ResponseBody
+    @ApiOperation(value = "分页查询用户作品提交信息")
+    @GetMapping("find_by_paging")
+    public JsonResult findByPaging(Integer pageNum, Integer pageSize){
+        JSONObject re = null;
+        Map<String, Object> message = new HashMap<>();  // 前后端传递消息
+        try {
+            re = submitService.findByPaging(pageNum, pageSize);
+            message.put("submit", re);
+        }catch (Exception e){
+            return JsonResult.isError(10001,"未知错误");
+        }
+        return JsonResult.isOk(message);
+    }
+
 }
