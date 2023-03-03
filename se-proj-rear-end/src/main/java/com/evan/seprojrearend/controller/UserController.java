@@ -54,7 +54,7 @@ public class UserController {
         String re = null;
         String token = null;
         Map<String, Object> message = new HashMap<>();  // 前后端传递消息
-        //re = userService.isInUser(username, password);
+//        re = userService.isInUser(username, password);
         try {
             re = userService.isInUser(username, password);
             //用户信息存在
@@ -115,5 +115,64 @@ public class UserController {
         }
         return JsonResult.isOk(message);
     }
+
+    /**
+     * 修改单个用户信息
+     * **/
+    @ApiOperation(value="修改单个用户信息",notes="用户名能改了（^_^)")
+    @ResponseBody
+    @PostMapping("modify_msg")
+    public JsonResult modifyMsg(String userid, String username, String mobile, String email, Integer age, String sex, String password, String school, String department, String supervisorname, String supervisorrank, String researchfield, String works, String name){
+        Map<String, Object> message = new HashMap<>();  // 前后端传递消息
+        String re = null;
+//        re = userService.changeUserMsg(username, mobile, email, age, sex, password, school, department, supervisorname, supervisorrank, researchfield, works, name);
+//        message.put("state", re);
+        try {
+            re = userService.changeUserMsg(userid, username, mobile, email, age, sex, password, school, department, supervisorname, supervisorrank, researchfield, works, name);
+            message.put("state", re);
+        }catch (Exception e){
+            return JsonResult.isError(10001,"未知错误");
+        }
+        return JsonResult.isOk(message);
+    }
+
+    /**
+     * 查询单个用户信息
+     * **/
+    @ResponseBody
+    @PostMapping("modify_password")
+    public JsonResult modifyPassword(HttpServletRequest request, String password){
+        //在请求头里获取token
+        String token = request.getHeader("token");
+        Map<String, Object> message = new HashMap<>();  // 前后端传递消息
+        String re = null;
+//        re = userService.checkMsg(username);
+//        message.put("message", re);
+        //创建token验证器
+        JWTVerifier jwtVerifier= JWT.require(Algorithm.HMAC256(TOKEN_SECRET)).withIssuer("auth0").build();
+        DecodedJWT decodedJWT=jwtVerifier.verify(token);
+        String username = decodedJWT.getClaim("username").asString();
+
+        try {
+            re = userService.modifyPassword(username,password);
+            message.put("state", re);
+        }catch (Exception e){
+            return JsonResult.isError(10001,"未知错误");
+        }
+        return JsonResult.isOk(message);
+    }
+
+//    /**
+//     * 查询单个用户信息_测试接口
+//     * **/
+//    @ResponseBody
+//    @GetMapping("check_msg_test")
+//    public JsonResult checkMegTest(String username){
+//        Map<String, Object> message = new HashMap<>();  // 前后端传递消息
+//        JSONObject re = null;
+//        re = userService.checkMsg(username);
+//        message.put("user", re);
+//        return JsonResult.isOk(message);
+//    }
 
 }

@@ -86,4 +86,44 @@ public class UserService {
 //        System.out.println(userMapper.selectByUsername(username));
         return userMapper.selectByUsername(username);
     }
+
+    /**
+     * 用户注册
+     * **/
+    public String changeUserMsg(String userid, String username,String mobile,String email,Integer age,String sex,String password,String school,String department,String supervisorname,String supervisorrank,String researchfield,String works,String name){
+        //根据username查找
+        User newUser = userMapper.selectByPrimaryKey(userid);
+
+        //更新信息
+        newUser.setUsername(username);
+        newUser.setMobile(mobile);
+        newUser.setAge(age);
+        newUser.setEmail(email);
+        newUser.setSex(sex);
+        newUser.setPassword(password);
+        newUser.setSchool(school);
+        newUser.setDepartment(department);
+        newUser.setSupervisorname(supervisorname);
+        newUser.setSupervisorrank(supervisorrank);
+        newUser.setResearchfield(researchfield);
+        newUser.setWorks(works);
+        newUser.setName(name);
+        if(userMapper.updateByPrimaryKeySelective(newUser)==1)
+            return "True";
+        else
+            return "False";
+    }
+
+    /**
+     * 修改密码
+     * **/
+    public String modifyPassword(String username, String password){
+        User thisUser = userMapper.selectByUname(username);
+        thisUser.setPassword(password);
+        if(userMapper.updateByPrimaryKeySelective(thisUser)==1)
+            return "True";
+        else
+            return "False";
+    }
+
 }
