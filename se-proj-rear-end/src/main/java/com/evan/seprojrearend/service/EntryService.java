@@ -25,7 +25,7 @@ public class EntryService {
     /**
      * 用户参赛记录
      * **/
-    public String newSubmit(String participantid, String competitionid){
+    public String newEntry(String participantid, String competitionid){
         Entry newEntry = new Entry();
         long time=new Date().getTime();
         System.out.println(""+time);

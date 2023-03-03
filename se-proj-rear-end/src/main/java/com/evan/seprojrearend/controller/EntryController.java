@@ -64,7 +64,7 @@ public class EntryController {
             competition = competitionService.getCompetitionInfo(competitionName);   // 获取比赛信息
             String userid = user.getString("userId");
             String competitionid = competition.getString("competitionId");
-            entryService.newSubmit(userid,competitionid);
+            entryService.newEntry(userid,competitionid);
 
         }catch (Exception e){
             return JsonResult.isError(10001,"未知错误");
