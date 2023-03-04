@@ -51,7 +51,7 @@ public class EntryService {
     /**
      * 获取全部比赛参赛人数
      * **/
-    public JSONObject getCompetitionsCount(){
+    public List<JSONObject> getCompetitionsCount(){
         //System.out.println("service没问题");
         //return competitionMapper.selectAll();
         return entryMapper.selectByCount();

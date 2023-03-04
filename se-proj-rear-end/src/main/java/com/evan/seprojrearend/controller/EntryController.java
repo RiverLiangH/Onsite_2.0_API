@@ -81,12 +81,12 @@ public class EntryController {
     @GetMapping("competitions_take_count")
     public JsonResult getCompetitionsCount(){
         Map<String, Object> message = new HashMap<>();  // 前后端传递消息
-        String re = null;
+        List<JSONObject> re = null;
 //        re = String.valueOf(entryService.getCompetitionsCount());
 //        message.put("competitionCount", re);
         try {
             //System.out.println("controller没问题");
-            re = String.valueOf(entryService.getCompetitionsCount());
+            re = entryService.getCompetitionsCount();
             message.put("competitionCount", re);
         }catch (Exception e){
             return JsonResult.isError(10001,"未知错误");
