@@ -93,4 +93,35 @@ public class EntryController {
         }
         return JsonResult.isOk(message);
     }
+
+    /**
+     * 判断用户是否参赛
+     *
+    **/
+    @ApiOperation(value="判断用户是否参赛")
+    @ResponseBody
+    @GetMapping("entry_state")
+    public JsonResult getEntryState(String competitionName, HttpServletRequest request){
+        //在请求头里获取token
+        String token = request.getHeader("token");
+        Map<String, Object> message = new HashMap<>();  // 前后端传递消息
+        //创建token验证器
+        JWTVerifier jwtVerifier= JWT.require(Algorithm.HMAC256(TOKEN_SECRET)).withIssuer("auth0").build();
+        DecodedJWT decodedJWT=jwtVerifier.verify(token);
+        String username = decodedJWT.getClaim("username").asString();
+        JSONObject user = userService.checkMsg(username);  // 获取用户信息
+        JSONObject competition = competitionService.getCompetitionInfo(competitionName);   // 获取比赛信息
+        String userid = user.getString("userId");
+        String competitionid = competition.getString("competitionId");
+        try {
+            boolean isEntry = entryService.getEntryState(userid,competitionid);
+            if(isEntry)
+                message.put("isEntry",true);
+            else
+                message.put("isEntry",false);
+        }catch (Exception e){
+            return JsonResult.isError(10001,"未知错误");
+        }
+        return JsonResult.isOk(message);
+    }
 }

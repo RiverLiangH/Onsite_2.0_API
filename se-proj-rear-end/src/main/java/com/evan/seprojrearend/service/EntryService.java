@@ -56,4 +56,8 @@ public class EntryService {
         //return competitionMapper.selectAll();
         return entryMapper.selectByCount();
     }
+
+    public boolean getEntryState(String participantid, String competitionid){
+        return entryMapper.selectByPrimaryKey(participantid, competitionid) != null;
+    }
 }

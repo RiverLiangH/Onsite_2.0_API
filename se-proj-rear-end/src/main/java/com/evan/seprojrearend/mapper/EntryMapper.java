@@ -21,4 +21,5 @@ public interface EntryMapper {
 
     //返回所有比赛参赛人数
     List<JSONObject> selectByCount();
+
 }
