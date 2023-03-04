@@ -137,7 +137,7 @@ public class UserController {
     }
 
     /**
-     * 查询单个用户信息
+     * 修改密码
      * **/
     @ResponseBody
     @PostMapping("modify_password")

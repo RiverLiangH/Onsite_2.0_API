@@ -7,6 +7,7 @@
  */
 package com.evan.seprojrearend.mapper;
 
+import com.alibaba.fastjson.JSONObject;
 import com.evan.seprojrearend.po.Entry;
 import org.apache.ibatis.annotations.Param;
 
@@ -15,4 +16,7 @@ public interface EntryMapper {
     int insert(Entry record);
 
     Entry selectByPrimaryKey(String participantid, String competitionid);
+
+    //返回所有比赛参赛人数
+    JSONObject selectByCount();
 }

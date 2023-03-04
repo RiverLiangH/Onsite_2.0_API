@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Api(tags="用户参赛模块")
@@ -66,6 +67,27 @@ public class EntryController {
             String competitionid = competition.getString("competitionId");
             entryService.newEntry(userid,competitionid);
 
+        }catch (Exception e){
+            return JsonResult.isError(10001,"未知错误");
+        }
+        return JsonResult.isOk(message);
+    }
+
+    /**
+     * 获取全部比赛参赛人数
+     * **/
+    @ApiOperation(value="获取全部比赛参赛人数")
+    @ResponseBody
+    @GetMapping("competitions_take_count")
+    public JsonResult getCompetitionsCount(){
+        Map<String, Object> message = new HashMap<>();  // 前后端传递消息
+        String re = null;
+//        re = String.valueOf(entryService.getCompetitionsCount());
+//        message.put("competitionCount", re);
+        try {
+            //System.out.println("controller没问题");
+            re = String.valueOf(entryService.getCompetitionsCount());
+            message.put("competitionCount", re);
         }catch (Exception e){
             return JsonResult.isError(10001,"未知错误");
         }

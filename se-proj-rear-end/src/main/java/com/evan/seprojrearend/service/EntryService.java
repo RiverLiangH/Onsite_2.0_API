@@ -7,6 +7,7 @@
  */
 package com.evan.seprojrearend.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.evan.seprojrearend.mapper.EntryMapper;
 import com.evan.seprojrearend.po.Entry;
 import com.evan.seprojrearend.po.Submit;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class EntryService {
@@ -44,5 +46,14 @@ public class EntryService {
         else
             return "False";
 
+    }
+
+    /**
+     * 获取全部比赛参赛人数
+     * **/
+    public JSONObject getCompetitionsCount(){
+        //System.out.println("service没问题");
+        //return competitionMapper.selectAll();
+        return entryMapper.selectByCount();
     }
 }

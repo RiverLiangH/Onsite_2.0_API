@@ -24,4 +24,11 @@
         from entry
         where participantId = #{participantid,jdbcType=VARCHAR} and competitionId = #{competitionid,jdbcType=VARCHAR}
   </select>
+    <!--返回所有比赛的参赛人数-->
+    <select id="selectByCount" resultType="com.alibaba.fastjson.JSONObject">
+        select competitionName,count(entry.competitionId) as count
+        from entry,competition
+        where entry.competitionId = competition.competitionId
+        GROUP BY entry.competitionId
+    </select>
 </mapper>

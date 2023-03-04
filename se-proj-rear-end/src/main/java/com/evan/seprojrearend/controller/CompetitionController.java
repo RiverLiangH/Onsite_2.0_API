@@ -61,4 +61,5 @@ public class CompetitionController {
         }
         return JsonResult.isOk(message);
     }
+
 }
