@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -35,7 +36,8 @@ public class SubmitService {
     /**
      * 用户提交比赛作品
      * **/
-    public String newSubmit(String submitterid, String competitionid, String dockerid){
+    public JSONObject newSubmit(String submitterid, String competitionid, String dockerid){
+        JSONObject message = new JSONObject();  // 需要返回的数据
         System.out.println("newSubmit开始执行");
         Submit newSubmit = new Submit();
         long time=new Date().getTime();
@@ -49,6 +51,12 @@ public class SubmitService {
         newSubmit.setDockerid(dockerid);
         newSubmit.setSubmittime(dates);
 
+        /*将需要返回的信息加入message中*/
+        message.put("submitTime",dates);
+        message.put("dockerId",dockerid);
+        message.put("submitterId",submitterid);
+        message.put("competitionId",competitionid);
+
         Entry tempEntry = entryMapper.selectByPrimaryKey(submitterid,competitionid);
         System.out.println("tempEntry:"+tempEntry);
         // 检查用户是否参赛，未参赛则不允许提交
@@ -56,12 +64,13 @@ public class SubmitService {
         {
             System.out.println("提交成功");
             if(submitMapper.insert(newSubmit)==1)
-                return "True";
+                message.put("result","True");
             else
-                return "False";
+                message.put("result","False");
         }
         else
-            return "False";
+            message.put("result","False");
+        return message;
     }
 
     /**
@@ -76,5 +85,12 @@ public class SubmitService {
         result.put("pages",data.getPages());
         result.put("total",data.getTotal());
         return result;
+    }
+
+    /**
+     * 获取单个用户的全部提交信息
+     * **/
+    public List<JSONObject> selectBySubmitterId(String submitterId, String competitionId){
+        return submitMapper.selectBySubmitterId(submitterId,competitionId);
     }
 }
