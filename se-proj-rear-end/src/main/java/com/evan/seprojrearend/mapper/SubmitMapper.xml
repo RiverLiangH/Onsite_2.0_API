@@ -11,9 +11,10 @@
     <result column="dockerId" jdbcType="VARCHAR" property="dockerid" />
     <result column="paperType" jdbcType="VARCHAR" property="papertype" />
     <result column="resultLink" jdbcType="VARCHAR" property="resultlink" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
   </resultMap>
   <sql id="Base_Column_List">
-    submitId, submitterId, competitionId, submitTime, testTime, score, dockerId, paperType, resultLink
+    submitId, submitterId, competitionId, submitTime, testTime, score, dockerId, paperType, resultLink, status
   </sql>
 <!--  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">-->
 <!--    select-->
@@ -28,11 +29,11 @@
   <!--用户参赛后提交作品-->
   <insert id="insert" parameterType="com.evan.seprojrearend.po.Submit">
     insert into submit (submitId, submitterId, competitionId,
-      submitTime, testTime, score, dockerId, paperType, resultLink
+      submitTime, testTime, score, dockerId, paperType, resultLink, status
       )
     values (#{submitid,jdbcType=VARCHAR}, #{submitterid,jdbcType=VARCHAR}, #{competitionid,jdbcType=VARCHAR},
       #{submittime,jdbcType=TIMESTAMP}, #{testtime,jdbcType=TIMESTAMP}, #{score,jdbcType=REAL}, #{dockerid,jdbcType=VARCHAR},
-      #{papertype,jdbcType=VARCHAR}, #{resultlink,jdbcType=VARCHAR}
+      #{papertype,jdbcType=VARCHAR}, #{resultlink,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}
       )
   </insert>
 

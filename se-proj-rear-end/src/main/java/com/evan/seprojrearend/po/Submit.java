@@ -21,6 +21,8 @@ public class Submit {
 
     private String resultlink;
 
+    private String status;
+
     /*submitid*/
     public String getSubmitid() {
         return submitid;
@@ -92,5 +94,13 @@ public class Submit {
 
     public void setResultlink(String resultlink) {
         this.resultlink = resultlink == null ? null : resultlink.trim();
+    }
+    /*status*/
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 }
