@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Api(tags="比赛提交模块")
@@ -70,7 +71,8 @@ public class SubmitController {
             System.out.println("userid:"+userid);
             System.out.println("competitionid:"+competitionid);
 
-            String result = submitService.newSubmit(userid,competitionid,dockerId);
+            JSONObject submit = submitService.newSubmit(userid,competitionid,dockerId);
+            message.put("submit",submit);
 //            if(result.equals("False"))
 //                return JsonResult.isError(10001,"未参赛不允许进行提交");
 
@@ -92,6 +94,34 @@ public class SubmitController {
         try {
             re = submitService.findByPaging(pageNum, pageSize);
             message.put("submit", re);
+        }catch (Exception e){
+            return JsonResult.isError(10001,"未知错误");
+        }
+        return JsonResult.isOk(message);
+    }
+
+    /**
+     * 获取单个用户的全部提交信息
+     * **/
+    @ResponseBody
+    @GetMapping("personal_submits")
+    public JsonResult getPersonalSubmits(String competitionName, HttpServletRequest request){
+        Map<String, Object> message = new HashMap<>();  // 前后端传递消息
+        List<JSONObject> re = null;
+        //在请求头里获取token
+        String token = request.getHeader("token");
+        //创建token验证器
+        JWTVerifier jwtVerifier= JWT.require(Algorithm.HMAC256(TOKEN_SECRET)).withIssuer("auth0").build();
+        DecodedJWT decodedJWT=jwtVerifier.verify(token);
+        String username = decodedJWT.getClaim("username").asString();
+        JSONObject user = userService.checkMsg(username);  // 获取用户信息
+        String userid = user.getString("userId");
+        JSONObject competition = competitionService.getCompetitionInfo(competitionName);   // 获取比赛信息
+        String competitionid = competition.getString("competitionId");
+
+        try {
+            re = submitService.selectBySubmitterId(userid,competitionid);
+            message.put("submits", re);
         }catch (Exception e){
             return JsonResult.isError(10001,"未知错误");
         }

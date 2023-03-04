@@ -43,6 +43,13 @@
     where score is not null
     order by score
   </select>
+
+  <!--获取个人的全部参赛记录-->
+  <select id="selectBySubmitterId" resultType="com.alibaba.fastjson.JSONObject">
+    select *
+    from submit
+    where submitterId = #{submitterid,jdbcType=VARCHAR} and competitionId = #{competitionid,jdbcType=VARCHAR}
+  </select>
 <!--  <insert id="insertSelective" parameterType="com.evan.seprojrearend.po.Submit">-->
 <!--    insert into submit-->
 <!--    <trim prefix="(" suffix=")" suffixOverrides=",">-->

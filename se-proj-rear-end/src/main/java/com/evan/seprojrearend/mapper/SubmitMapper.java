@@ -1,5 +1,6 @@
 package com.evan.seprojrearend.mapper;
 
+import com.alibaba.fastjson.JSONObject;
 import com.evan.seprojrearend.po.Scene;
 import com.evan.seprojrearend.po.Submit;
 import com.github.pagehelper.Page;
@@ -22,7 +23,7 @@ public interface SubmitMapper {
 //
 //    int insertSelective(Submit record);
 //
-//    Submit selectByPrimaryKey(String submitid);
+    List<JSONObject> selectBySubmitterId(String submitterid, String competitionid);   //获取单个用户的全部提交信息
 //
 //    int updateByPrimaryKeySelective(Submit record);
 //
