@@ -68,6 +68,11 @@ public class WebConfiguration implements WebMvcConfigurer {
 //        excludePath.add("/user/check_msg");  //查询信息
 //        excludePath.add("/user/modify_password");  //查询信息
         excludePath.add("/user/modify_msg");  //修改信息
+
+        excludePath.add("scene/find_by_paging");
+        excludePath.add("entry/competitions_take_count");
+        excludePath.add("competition/all_competitions");
+        excludePath.add("competition/competition_info");
 //        excludePath.add("/test");
 //        excludePath.add("/scene/find_by_paging");
 //        excludePath.add("/static/**");  //静态资源
