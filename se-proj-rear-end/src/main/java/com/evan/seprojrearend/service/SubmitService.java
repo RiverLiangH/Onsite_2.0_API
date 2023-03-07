@@ -76,10 +76,10 @@ public class SubmitService {
     /**
     * 获取全部提交信息（按成绩排序）
     * **/
-    public JSONObject findByPaging(Integer pageNum, Integer pageSize){
+    public JSONObject findByPaging(String competitionId, Integer pageNum, Integer pageSize){
 
         PageHelper.startPage(pageNum,pageSize);
-        Page<Submit> data = submitMapper.findByPaging();
+        Page<Submit> data = submitMapper.findByPaging(competitionId);
         JSONObject result = new JSONObject();
         result.put("submit",data);
         result.put("pages",data.getPages());

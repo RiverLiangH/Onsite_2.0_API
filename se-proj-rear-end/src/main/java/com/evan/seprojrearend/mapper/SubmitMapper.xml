@@ -41,7 +41,7 @@
     select
     *
     from submit
-    where score is not null
+    where score is not null and competitionId = #{competitionid,jdbcType=VARCHAR}
     order by score
   </select>
 
