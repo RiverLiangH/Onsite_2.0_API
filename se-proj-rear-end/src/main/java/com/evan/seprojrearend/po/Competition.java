@@ -20,6 +20,8 @@ public class Competition {
     private String submissiontype;
 
     private String remark;
+
+    private Date deadline;
     /*competitionid*/
     public String getCompetitionid() {
         return competitionid;
@@ -91,5 +93,13 @@ public class Competition {
 
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
+    }
+    /*deadline*/
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
     }
 }
