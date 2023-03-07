@@ -15,7 +15,7 @@ public interface SubmitMapper {
 
 //    List<Submit> selectAll(); //获取全部提交信息（按成绩排序）
 
-    Page<Submit> findByPaging();   //获取全部提交信息（按成绩排序）
+    Page<Submit> findByPaging(String competitionid);   //获取全部提交信息（按成绩排序）
 
 //    int updateByPrimaryKey(Submit record);
 

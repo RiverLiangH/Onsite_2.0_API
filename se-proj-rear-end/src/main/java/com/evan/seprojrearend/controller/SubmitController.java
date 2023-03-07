@@ -88,11 +88,13 @@ public class SubmitController {
     @ResponseBody
     @ApiOperation(value = "分页查询用户作品提交信息")
     @GetMapping("find_by_paging")
-    public JsonResult findByPaging(Integer pageNum, Integer pageSize){
+    public JsonResult findByPaging(String competitionName, Integer pageNum, Integer pageSize){
         JSONObject re = null;
         Map<String, Object> message = new HashMap<>();  // 前后端传递消息
         try {
-            re = submitService.findByPaging(pageNum, pageSize);
+            JSONObject competition = competitionService.getCompetitionInfo(competitionName);   // 获取比赛信息
+            String competitionid = competition.getString("competitionId");
+            re = submitService.findByPaging(competitionid, pageNum, pageSize);
             message.put("submit", re);
         }catch (Exception e){
             return JsonResult.isError(10001,"未知错误");
