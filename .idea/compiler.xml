@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="se-proj-rear-end" target="8" />
+      <module name="se-proj-rear-end" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

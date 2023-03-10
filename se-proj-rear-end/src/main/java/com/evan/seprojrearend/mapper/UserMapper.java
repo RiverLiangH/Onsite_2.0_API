@@ -28,4 +28,7 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    //查询用户名
+    int countUsername(@Param("username") String username);
 }

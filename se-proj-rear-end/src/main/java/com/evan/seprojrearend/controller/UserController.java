@@ -64,6 +64,7 @@ public class UserController {
                 user.setPassword(password);
                 token= TokenUtils.sign(user);    //登录验证
             }
+            message.put("state", re);
             message.put("token", token);
             message.put("name", username);
         }catch (Exception e){
@@ -155,6 +156,25 @@ public class UserController {
 
         try {
             re = userService.modifyPassword(username,password);
+            message.put("state", re);
+        }catch (Exception e){
+            return JsonResult.isError(10001,"未知错误");
+        }
+        return JsonResult.isOk(message);
+    }
+
+    /**
+     * 判断用户名是否存在
+     * **/
+    @ResponseBody
+    @PostMapping("validate_username")
+    public JsonResult validateUsername(String username){
+        Map<String, Object> message = new HashMap<>();  // 前后端传递消息
+        String re = null;
+//        re = userService.validateUsername(username);
+//        message.put("state", re);
+        try {
+            re = userService.validateUsername(username);
             message.put("state", re);
         }catch (Exception e){
             return JsonResult.isError(10001,"未知错误");

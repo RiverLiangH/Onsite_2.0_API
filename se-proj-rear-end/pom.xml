@@ -176,6 +176,15 @@
 					<include>**/*.xml</include>
 				</includes>
 			</resource>
+			<!-- 项目打包时会将java目录中的*.xml文件也进行打包 -->
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<!-- **表示多层目录，*表示一级目录 -->
+					<include>**/*.xml</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
 		</resources>
 	</build>
 

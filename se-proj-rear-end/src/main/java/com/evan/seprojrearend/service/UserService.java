@@ -126,4 +126,15 @@ public class UserService {
             return "False";
     }
 
+    /**
+     * 判断用户名是否存在
+     * **/
+    public String validateUsername(String username){
+        if(userMapper.countUsername(username)>=1)
+            return "True";
+        else
+            return "False";
+    }
+
+
 }
