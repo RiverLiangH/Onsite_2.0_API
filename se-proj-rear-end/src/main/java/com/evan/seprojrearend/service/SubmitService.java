@@ -36,7 +36,7 @@ public class SubmitService {
     /**
      * 用户提交比赛作品
      * **/
-    public JSONObject newSubmit(String submitterid, String competitionid, String dockerid){
+    public JSONObject newSubmit(String papertype, String submitterid, String competitionid, String dockerid){
         JSONObject message = new JSONObject();  // 需要返回的数据
         System.out.println("newSubmit开始执行");
         Submit newSubmit = new Submit();
@@ -50,12 +50,14 @@ public class SubmitService {
         newSubmit.setCompetitionid(competitionid);
         newSubmit.setDockerid(dockerid);
         newSubmit.setSubmittime(dates);
+        newSubmit.setPapertype(papertype);
 
         /*将需要返回的信息加入message中*/
         message.put("submitTime",dates);
         message.put("dockerId",dockerid);
         message.put("submitterId",submitterid);
         message.put("competitionId",competitionid);
+        message.put("paperType",papertype);
 
         Entry tempEntry = entryMapper.selectByPrimaryKey(submitterid,competitionid);
         System.out.println("tempEntry:"+tempEntry);
@@ -79,7 +81,8 @@ public class SubmitService {
     public JSONObject findByPaging(String competitionId, Integer pageNum, Integer pageSize){
 
         PageHelper.startPage(pageNum,pageSize);
-        Page<Submit> data = submitMapper.findByPaging(competitionId);
+        System.out.println("成功执行到findByPaging");
+        Page<JSONObject> data = submitMapper.findByPaging(competitionId);
         JSONObject result = new JSONObject();
         result.put("submit",data);
         result.put("pages",data.getPages());

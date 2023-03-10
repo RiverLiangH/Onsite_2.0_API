@@ -37,13 +37,16 @@
       )
   </insert>
 
-  <select id="findByPaging" resultMap="BaseResultMap">
-    select
-    *
-    from submit
-    where score is not null and competitionId = #{competitionid,jdbcType=VARCHAR}
-    order by score
+  <select id="findByPaging" resultType="com.alibaba.fastjson.JSONObject">
+SELECT max_score.submitterId,max_score.userName, GROUP_CONCAT(paperType SEPARATOR ';') as paperType,GROUP_CONCAT(score SEPARATOR ';') as score
+FROM (
+	SELECT S.submitterId, U.userName, S.paperType, max(score) as score
+	from submit as S JOIN `user` as U on S.submitterId = U.userId
+	where S.score is not null and competitionId =  #{competitionid,jdbcType=VARCHAR} and S.paperType is not NULL
+	GROUP BY S.submitterId, S.paperType) as max_score
+GROUP BY max_score.submitterId
   </select>
+
 
   <!--获取个人的全部参赛记录-->
   <select id="selectBySubmitterId" resultType="com.alibaba.fastjson.JSONObject">
