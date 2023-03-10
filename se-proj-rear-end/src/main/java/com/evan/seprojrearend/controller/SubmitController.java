@@ -51,7 +51,7 @@ public class SubmitController {
     @ApiOperation(value="用户提交比赛作品")
     @ResponseBody
     @PostMapping("enter")
-    public JsonResult enter(String competitionName, String dockerId, HttpServletRequest request){
+    public JsonResult enter(String paperType, String competitionName, String dockerId, HttpServletRequest request){
         //在请求头里获取token
         String token = request.getHeader("token");
         Map<String, Object> message = new HashMap<>();  // 前后端传递消息
@@ -71,7 +71,7 @@ public class SubmitController {
             System.out.println("userid:"+userid);
             System.out.println("competitionid:"+competitionid);
 
-            JSONObject submit = submitService.newSubmit(userid,competitionid,dockerId);
+            JSONObject submit = submitService.newSubmit(paperType,userid,competitionid,dockerId);
             message.put("submit",submit);
 //            if(result.equals("False"))
 //                return JsonResult.isError(10001,"未参赛不允许进行提交");
