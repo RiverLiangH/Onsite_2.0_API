@@ -20,6 +20,7 @@
     from scene
     where sceneName = #{scenename,jdbcType=VARCHAR}
   </select>
+  <!--  分页筛选 -->
   <select id="findByPaging" resultMap="BaseResultMap" parameterType="map">
     select
     *
@@ -40,6 +41,14 @@
     <if test="lanenum != null">
       and lanenum = #{lanenum}
     </if>
+  </select>
+  <!--  分页筛选 -->
+  <!--  根据sceneName筛选 -->
+  <select id="selectByScenename" resultType="com.alibaba.fastjson.JSONObject">
+    select *
+    from scene
+    where
+    username = #{scenename,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from scene

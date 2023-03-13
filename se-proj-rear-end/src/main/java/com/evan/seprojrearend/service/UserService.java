@@ -90,7 +90,7 @@ public class UserService {
     /**
      * 用户注册
      * **/
-    public String changeUserMsg(String userid, String username,String mobile,String email,Integer age,String sex,String password,String school,String department,String supervisorname,String supervisorrank,String researchfield,String works,String name){
+    public String changeUserMsg(String userid, String username,String mobile,String email,Integer age,String sex,String school,String department,String supervisorname,String supervisorrank,String researchfield,String works,String name){
         //根据username查找
         User newUser = userMapper.selectByPrimaryKey(userid);
 
@@ -100,7 +100,6 @@ public class UserService {
         newUser.setAge(age);
         newUser.setEmail(email);
         newUser.setSex(sex);
-        newUser.setPassword(password);
         newUser.setSchool(school);
         newUser.setDepartment(department);
         newUser.setSupervisorname(supervisorname);

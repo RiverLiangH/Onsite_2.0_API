@@ -20,6 +20,7 @@ public class SceneService {
         this.sceneMapper = sceneMapper;
     }
 
+    //分页筛选数据
     public JSONObject findByPaging(String source, String scenetype, String risktype, String roadtype, Integer lanenum, Integer pageNum, Integer pageSize){
 
         PageHelper.startPage(pageNum,pageSize);
@@ -35,5 +36,10 @@ public class SceneService {
         result.put("pages",data.getPages());
         result.put("total",data.getTotal());
         return result;
+    }
+
+    //返回单独一组数据
+    public JSONObject getSceneMsg(String sceneName){
+        return sceneMapper.selectByScenename(sceneName);
     }
 }

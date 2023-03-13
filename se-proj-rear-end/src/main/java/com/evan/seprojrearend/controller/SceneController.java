@@ -43,4 +43,22 @@ public class SceneController {
         return JsonResult.isOk(message);
     }
 
+    /**
+     * 根据sceneName返回一组数据
+     * **/
+    @ResponseBody
+    @ApiOperation(value = "根据sceneName返回一组数据")
+    @GetMapping("get_scene_msg")
+    public JsonResult getScenceMsg(String sceneName){
+        String re = null;
+        Map<String, Object> message = new HashMap<>();  // 前后端传递消息
+        try {
+            re = String.valueOf(sceneService.getSceneMsg(sceneName));
+            message.put("scene", re);
+        }catch (Exception e){
+            return JsonResult.isError(10001,"未知错误");
+        }
+        return JsonResult.isOk(message);
+    }
+
 }
