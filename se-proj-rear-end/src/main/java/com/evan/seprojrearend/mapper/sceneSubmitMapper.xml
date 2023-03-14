@@ -19,6 +19,7 @@
     from sceneSubmit
     where
     scenename = #{scenename,jdbcType=VARCHAR}
+    order by score desc
   </select>
   <insert id="insertSelective" parameterType="com.evan.seprojrearend.po.sceneSubmit">
     insert into sceneSubmit
