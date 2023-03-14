@@ -51,6 +51,7 @@ public class SubmitService {
         newSubmit.setDockerid(dockerid);
         newSubmit.setSubmittime(dates);
         newSubmit.setPapertype(papertype);
+        newSubmit.setStatus("QUEUING");
 
         /*将需要返回的信息加入message中*/
         message.put("submitTime",dates);
