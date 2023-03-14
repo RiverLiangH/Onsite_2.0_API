@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 @Service
 public class SceneService {
@@ -48,7 +49,7 @@ public class SceneService {
     }
 
     //根据sceneName返回所有提交的用户
-    public JSONObject sceneUser(String sceneName){
+    public List<JSONObject> sceneUser(String sceneName){
         return sceneSubmitMapper.selectByScenename(sceneName);
     }
 

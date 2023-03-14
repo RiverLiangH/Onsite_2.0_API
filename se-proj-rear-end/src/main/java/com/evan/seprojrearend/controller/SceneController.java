@@ -71,11 +71,11 @@ public class SceneController {
     @GetMapping("scene_user")
     public JsonResult getSceneUser(String sceneName){
         Map<String, Object> message = new HashMap<>();  // 前后端传递消息
-        String re = null;
+        List<JSONObject> re = null;
 //        re = String.valueOf(sceneService.sceneUser(sceneName));
 //        message.put("users", re);
         try {
-            re = String.valueOf(sceneService.sceneUser(sceneName));
+            re = sceneService.sceneUser(sceneName);
             message.put("users", re);
         }catch (Exception e){
             return JsonResult.isError(10001,"未知错误");
