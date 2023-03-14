@@ -22,7 +22,9 @@ public class Competition {
     private String remark;
 
     private Date deadline;
-    /*competitionid*/
+
+    private Date switchtime;
+
     public String getCompetitionid() {
         return competitionid;
     }
@@ -30,7 +32,7 @@ public class Competition {
     public void setCompetitionid(String competitionid) {
         this.competitionid = competitionid == null ? null : competitionid.trim();
     }
-    /*competitionname*/
+
     public String getCompetitionname() {
         return competitionname;
     }
@@ -38,7 +40,7 @@ public class Competition {
     public void setCompetitionname(String competitionname) {
         this.competitionname = competitionname == null ? null : competitionname.trim();
     }
-    /*starttime*/
+
     public Date getStarttime() {
         return starttime;
     }
@@ -46,7 +48,7 @@ public class Competition {
     public void setStarttime(Date starttime) {
         this.starttime = starttime;
     }
-    /*endtime*/
+
     public Date getEndtime() {
         return endtime;
     }
@@ -54,7 +56,7 @@ public class Competition {
     public void setEndtime(Date endtime) {
         this.endtime = endtime;
     }
-    /*description*/
+
     public String getDescription() {
         return description;
     }
@@ -62,7 +64,7 @@ public class Competition {
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
     }
-    /*sponsor*/
+
     public String getSponsor() {
         return sponsor;
     }
@@ -70,7 +72,7 @@ public class Competition {
     public void setSponsor(String sponsor) {
         this.sponsor = sponsor == null ? null : sponsor.trim();
     }
-    /*status*/
+
     public String getStatus() {
         return status;
     }
@@ -78,7 +80,7 @@ public class Competition {
     public void setStatus(String status) {
         this.status = status == null ? null : status.trim();
     }
-    /*submissiontype*/
+
     public String getSubmissiontype() {
         return submissiontype;
     }
@@ -86,7 +88,7 @@ public class Competition {
     public void setSubmissiontype(String submissiontype) {
         this.submissiontype = submissiontype == null ? null : submissiontype.trim();
     }
-    /*remark*/
+
     public String getRemark() {
         return remark;
     }
@@ -94,12 +96,20 @@ public class Competition {
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
     }
-    /*deadline*/
+
     public Date getDeadline() {
         return deadline;
     }
 
     public void setDeadline(Date deadline) {
         this.deadline = deadline;
+    }
+
+    public Date getSwitchtime() {
+        return switchtime;
+    }
+
+    public void setSwitchtime(Date switchtime) {
+        this.switchtime = switchtime;
     }
 }

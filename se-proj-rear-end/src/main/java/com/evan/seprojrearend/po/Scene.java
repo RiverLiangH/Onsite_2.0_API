@@ -3,11 +3,13 @@ package com.evan.seprojrearend.po;
 public class Scene {
     private String scenename;
 
+    private String version;
+
     private String source;
 
     private String scenetype;
 
-    private String risktype;
+    private String targettype;
 
     private String roadtype;
 
@@ -17,12 +19,30 @@ public class Scene {
 
     private String downloadlink;
 
+    private String originalgif;
+
+    private String bestgif;
+
+    private Integer carnum;
+
+    private Float scenetime;
+
+    private String testtype;
+
     public String getScenename() {
         return scenename;
     }
 
     public void setScenename(String scenename) {
         this.scenename = scenename == null ? null : scenename.trim();
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version == null ? null : version.trim();
     }
 
     public String getSource() {
@@ -41,12 +61,12 @@ public class Scene {
         this.scenetype = scenetype == null ? null : scenetype.trim();
     }
 
-    public String getRisktype() {
-        return risktype;
+    public String getTargettype() {
+        return targettype;
     }
 
-    public void setRisktype(String risktype) {
-        this.risktype = risktype == null ? null : risktype.trim();
+    public void setTargettype(String targettype) {
+        this.targettype = targettype == null ? null : targettype.trim();
     }
 
     public String getRoadtype() {
@@ -79,5 +99,45 @@ public class Scene {
 
     public void setDownloadlink(String downloadlink) {
         this.downloadlink = downloadlink == null ? null : downloadlink.trim();
+    }
+
+    public String getOriginalgif() {
+        return originalgif;
+    }
+
+    public void setOriginalgif(String originalgif) {
+        this.originalgif = originalgif == null ? null : originalgif.trim();
+    }
+
+    public String getBestgif() {
+        return bestgif;
+    }
+
+    public void setBestgif(String bestgif) {
+        this.bestgif = bestgif == null ? null : bestgif.trim();
+    }
+
+    public Integer getCarnum() {
+        return carnum;
+    }
+
+    public void setCarnum(Integer carnum) {
+        this.carnum = carnum;
+    }
+
+    public Float getScenetime() {
+        return scenetime;
+    }
+
+    public void setScenetime(Float scenetime) {
+        this.scenetime = scenetime;
+    }
+
+    public String getTesttype() {
+        return testtype;
+    }
+
+    public void setTesttype(String testtype) {
+        this.testtype = testtype == null ? null : testtype.trim();
     }
 }

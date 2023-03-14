@@ -195,6 +195,9 @@
       <if test="works != null">
         works = #{works,jdbcType=VARCHAR},
       </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
     </set>
     where userId = #{userid,jdbcType=VARCHAR}
   </update>

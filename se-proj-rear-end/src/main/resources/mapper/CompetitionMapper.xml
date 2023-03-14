@@ -5,6 +5,166 @@
     <id column="competitionId" jdbcType="VARCHAR" property="competitionid" />
     <result column="competitionName" jdbcType="VARCHAR" property="competitionname" />
     <result column="startTime" jdbcType="TIMESTAMP" property="starttime" />
+    <result column="endTime" jdbcType="TIMESTAMP" property="endtime" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="sponsor" jdbcType="VARCHAR" property="sponsor" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="submissionType" jdbcType="VARCHAR" property="submissiontype" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="deadline" jdbcType="TIMESTAMP" property="deadline" />
+    <result column="switchtime" jdbcType="TIMESTAMP" property="switchtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    competitionId, competitionName, startTime, endTime, description, sponsor, status, 
+    submissionType, remark, deadline, switchtime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from competition
+    where competitionId = #{competitionid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from competition
+    where competitionId = #{competitionid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.evan.seprojrearend.po.Competition">
+    insert into competition (competitionId, competitionName, startTime, 
+      endTime, description, sponsor, 
+      status, submissionType, remark, 
+      deadline, switchtime)
+    values (#{competitionid,jdbcType=VARCHAR}, #{competitionname,jdbcType=VARCHAR}, #{starttime,jdbcType=TIMESTAMP}, 
+      #{endtime,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR}, #{sponsor,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{submissiontype,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{deadline,jdbcType=TIMESTAMP}, #{switchtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.evan.seprojrearend.po.Competition">
+    insert into competition
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="competitionid != null">
+        competitionId,
+      </if>
+      <if test="competitionname != null">
+        competitionName,
+      </if>
+      <if test="starttime != null">
+        startTime,
+      </if>
+      <if test="endtime != null">
+        endTime,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="sponsor != null">
+        sponsor,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="submissiontype != null">
+        submissionType,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="deadline != null">
+        deadline,
+      </if>
+      <if test="switchtime != null">
+        switchtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="competitionid != null">
+        #{competitionid,jdbcType=VARCHAR},
+      </if>
+      <if test="competitionname != null">
+        #{competitionname,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsor != null">
+        #{sponsor,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="submissiontype != null">
+        #{submissiontype,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="deadline != null">
+        #{deadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="switchtime != null">
+        #{switchtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.evan.seprojrearend.po.Competition">
+    update competition
+    <set>
+      <if test="competitionname != null">
+        competitionName = #{competitionname,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        startTime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        endTime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsor != null">
+        sponsor = #{sponsor,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="submissiontype != null">
+        submissionType = #{submissiontype,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="deadline != null">
+        deadline = #{deadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="switchtime != null">
+        switchtime = #{switchtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where competitionId = #{competitionid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.evan.seprojrearend.po.Competition">
+    update competition
+    set competitionName = #{competitionname,jdbcType=VARCHAR},
+      startTime = #{starttime,jdbcType=TIMESTAMP},
+      endTime = #{endtime,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=VARCHAR},
+      sponsor = #{sponsor,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      submissionType = #{submissiontype,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      deadline = #{deadline,jdbcType=TIMESTAMP},
+      switchtime = #{switchtime,jdbcType=TIMESTAMP}
+    where competitionId = #{competitionid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.evan.seprojrearend.po.Competition">
+    <id column="competitionId" jdbcType="VARCHAR" property="competitionid" />
+    <result column="competitionName" jdbcType="VARCHAR" property="competitionname" />
+    <result column="startTime" jdbcType="TIMESTAMP" property="starttime" />
     <result column="duration" jdbcType="TIME" property="duration" />
   </resultMap>
   <sql id="Base_Column_List">
