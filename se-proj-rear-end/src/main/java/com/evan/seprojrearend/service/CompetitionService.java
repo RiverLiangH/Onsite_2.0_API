@@ -32,8 +32,8 @@ public class CompetitionService {
     /**
      * 获取全部比赛信息
      * **/
-    public List<JSONObject> getCompetitions(){
+    public List<JSONObject> getCompetitions(String competitionType){
         System.out.println("service没问题");
-        return competitionMapper.selectAll();
+        return competitionMapper.selectAll(competitionType);
     }
 }

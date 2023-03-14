@@ -49,12 +49,12 @@ public class CompetitionController {
      * **/
     @ResponseBody
     @GetMapping("all_competitions")
-    public JsonResult getCompetitions(){
+    public JsonResult getCompetitions(String competitionType){
         Map<String, Object> message = new HashMap<>();  // 前后端传递消息
         List<JSONObject> re = null;
         try {
             System.out.println("controller没问题");
-            re = competitionService.getCompetitions();
+            re = competitionService.getCompetitions(competitionType);
             message.put("competition", re);
         }catch (Exception e){
             return JsonResult.isError(10001,"未知错误");
