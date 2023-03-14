@@ -16,10 +16,11 @@
     <result column="researchField" jdbcType="VARCHAR" property="researchfield" />
     <result column="works" jdbcType="VARCHAR" property="works" />
     <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="identity" jdbcType="VARCHAR" property="identity" />
   </resultMap>
   <sql id="Base_Column_List">
     userId, userName, mobile, email, age, sex, password, school, department, supervisorName,
-    supervisorRank, researchField, works, name
+    supervisorRank, researchField, works, name, identity
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
@@ -75,12 +76,13 @@
     insert into user (userId, userName, mobile,
       email, age, sex, password,
       school, department, supervisorName,
-      supervisorRank, researchField, works, name
+      supervisorRank, researchField, works, name, identity
       )
     values (#{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR},
       #{email,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{sex,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
       #{school,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, #{supervisorname,jdbcType=VARCHAR},
-      #{supervisorrank,jdbcType=VARCHAR}, #{researchfield,jdbcType=VARCHAR}, #{works,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}
+      #{supervisorrank,jdbcType=VARCHAR}, #{researchfield,jdbcType=VARCHAR}, #{works,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+      #{identity,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.evan.seprojrearend.po.User">
@@ -125,6 +127,9 @@
       <if test="works != null">
         works,
       </if>
+      <if test="identity != null">
+        identity,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userid != null">
@@ -165,6 +170,9 @@
       </if>
       <if test="works != null">
         #{works,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        #{identity,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
