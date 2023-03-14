@@ -73,6 +73,7 @@ public class UserService {
         newUser.setResearchfield(researchfield);
         newUser.setWorks(works);
         newUser.setName(name);
+        newUser.setIdentity("User");
         if(userMapper.insert(newUser)==1)
             return "True";
         else

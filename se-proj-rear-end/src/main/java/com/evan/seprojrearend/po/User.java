@@ -29,6 +29,8 @@ public class User {
 
     private String name;
 
+    private String identity;
+
     public String getUserid() {
         return userid;
     }
@@ -139,5 +141,13 @@ public class User {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public String getIdentity() {
+        return identity;
+    }
+
+    public void setIdentity(String identity) {
+        this.identity = identity == null ? null : identity.trim();
     }
 }
