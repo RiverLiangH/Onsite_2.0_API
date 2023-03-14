@@ -1,6 +1,8 @@
 package com.evan.seprojrearend.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.evan.seprojrearend.common.JsonResult;
+import com.evan.seprojrearend.mapper.sceneSubmitMapper;
 import com.evan.seprojrearend.service.SceneService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -9,6 +11,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Api(tags="场景模块")
@@ -60,5 +63,42 @@ public class SceneController {
         }
         return JsonResult.isOk(message);
     }
+
+    /**
+     * 获取某个场景提交的所有用户
+     * **/
+    @ResponseBody
+    @GetMapping("scene_user")
+    public JsonResult getSceneUser(String sceneName){
+        Map<String, Object> message = new HashMap<>();  // 前后端传递消息
+        String re = null;
+//        re = String.valueOf(sceneService.sceneUser(sceneName));
+//        message.put("users", re);
+        try {
+            re = String.valueOf(sceneService.sceneUser(sceneName));
+            message.put("users", re);
+        }catch (Exception e){
+            return JsonResult.isError(10001,"未知错误");
+        }
+        return JsonResult.isOk(message);
+    }
+
+//    /**
+//     * 获取某个场景所有信息
+//     * **/
+//    @ResponseBody
+//    @GetMapping("scene_msg")
+//    public JsonResult getSceneMsg(String sceneName){
+//        Map<String, Object> message = new HashMap<>();  // 前后端传递消息
+//        List<JSONObject> re = null;
+//        //在请求头里获取token
+//        try {
+//            //re = submitService.selectBySubmitterId(userid,competitionid);
+//            message.put("msg", re);
+//        }catch (Exception e){
+//            return JsonResult.isError(10001,"未知错误");
+//        }
+//        return JsonResult.isOk(message);
+//    }
 
 }

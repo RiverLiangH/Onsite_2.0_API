@@ -48,7 +48,7 @@
     select *
     from scene
     where
-    username = #{scenename,jdbcType=VARCHAR}
+    scenename = #{scenename,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from scene

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.evan.seprojrearend.mapper.sceneSubmitMapper">
+  <resultMap id="BaseResultMap" type="com.evan.seprojrearend.po.sceneSubmit">
+    <result column="sceneName" jdbcType="VARCHAR" property="scenename" />
+    <result column="submitterId" jdbcType="VARCHAR" property="submitterid" />
+    <result column="score" jdbcType="REAL" property="score" />
+    <result column="submitTime" jdbcType="TIMESTAMP" property="submittime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.evan.seprojrearend.po.sceneSubmit">
+    insert into sceneSubmit (sceneName, submitterId, score, 
+      submitTime)
+    values (#{scenename,jdbcType=VARCHAR}, #{submitterid,jdbcType=VARCHAR}, #{score,jdbcType=REAL}, 
+      #{submittime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.evan.seprojrearend.po.sceneSubmit">
+    insert into sceneSubmit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="scenename != null">
+        sceneName,
+      </if>
+      <if test="submitterid != null">
+        submitterId,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="submittime != null">
+        submitTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="scenename != null">
+        #{scenename,jdbcType=VARCHAR},
+      </if>
+      <if test="submitterid != null">
+        #{submitterid,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=REAL},
+      </if>
+      <if test="submittime != null">
+        #{submittime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

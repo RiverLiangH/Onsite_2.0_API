@@ -77,7 +77,12 @@
                selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-
+        <table tableName="sceneSubmit" domainObjectName="sceneSubmit"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
         <table schema="" tableName="contract" domainObjectName="Contract"/>
 
     </context>

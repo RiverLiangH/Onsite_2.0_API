@@ -25,6 +25,10 @@ public class Competition {
 
     private Date switchtime;
 
+    private Date submittime;
+
+    private String competitiontype;
+
     public String getCompetitionid() {
         return competitionid;
     }
@@ -111,5 +115,21 @@ public class Competition {
 
     public void setSwitchtime(Date switchtime) {
         this.switchtime = switchtime;
+    }
+
+    public Date getSubmittime() {
+        return submittime;
+    }
+
+    public void setSubmittime(Date submittime) {
+        this.submittime = submittime;
+    }
+
+    public String getCompetitiontype() {
+        return competitiontype;
+    }
+
+    public void setCompetitiontype(String competitiontype) {
+        this.competitiontype = competitiontype == null ? null : competitiontype.trim();
     }
 }

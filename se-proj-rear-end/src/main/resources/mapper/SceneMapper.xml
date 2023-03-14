@@ -198,6 +198,396 @@
   </update>
   <resultMap id="BaseResultMap" type="com.evan.seprojrearend.po.Scene">
     <id column="sceneName" jdbcType="VARCHAR" property="scenename" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="sceneType" jdbcType="VARCHAR" property="scenetype" />
+    <result column="targetType" jdbcType="VARCHAR" property="targettype" />
+    <result column="roadType" jdbcType="VARCHAR" property="roadtype" />
+    <result column="laneNum" jdbcType="INTEGER" property="lanenum" />
+    <result column="apolloScore" jdbcType="REAL" property="apolloscore" />
+    <result column="downloadLink" jdbcType="VARCHAR" property="downloadlink" />
+    <result column="originalGif" jdbcType="VARCHAR" property="originalgif" />
+    <result column="bestGif" jdbcType="VARCHAR" property="bestgif" />
+    <result column="carNum" jdbcType="INTEGER" property="carnum" />
+    <result column="sceneTime" jdbcType="REAL" property="scenetime" />
+    <result column="testType" jdbcType="VARCHAR" property="testtype" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sceneName, version, source, sceneType, targetType, roadType, laneNum, apolloScore, 
+    downloadLink, originalGif, bestGif, carNum, sceneTime, testType
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from scene
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from scene
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.evan.seprojrearend.po.Scene">
+    insert into scene (sceneName, version, source, 
+      sceneType, targetType, roadType, 
+      laneNum, apolloScore, downloadLink, 
+      originalGif, bestGif, carNum, 
+      sceneTime, testType)
+    values (#{scenename,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, 
+      #{scenetype,jdbcType=VARCHAR}, #{targettype,jdbcType=VARCHAR}, #{roadtype,jdbcType=VARCHAR}, 
+      #{lanenum,jdbcType=INTEGER}, #{apolloscore,jdbcType=REAL}, #{downloadlink,jdbcType=VARCHAR}, 
+      #{originalgif,jdbcType=VARCHAR}, #{bestgif,jdbcType=VARCHAR}, #{carnum,jdbcType=INTEGER}, 
+      #{scenetime,jdbcType=REAL}, #{testtype,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.evan.seprojrearend.po.Scene">
+    insert into scene
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="scenename != null">
+        sceneName,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="scenetype != null">
+        sceneType,
+      </if>
+      <if test="targettype != null">
+        targetType,
+      </if>
+      <if test="roadtype != null">
+        roadType,
+      </if>
+      <if test="lanenum != null">
+        laneNum,
+      </if>
+      <if test="apolloscore != null">
+        apolloScore,
+      </if>
+      <if test="downloadlink != null">
+        downloadLink,
+      </if>
+      <if test="originalgif != null">
+        originalGif,
+      </if>
+      <if test="bestgif != null">
+        bestGif,
+      </if>
+      <if test="carnum != null">
+        carNum,
+      </if>
+      <if test="scenetime != null">
+        sceneTime,
+      </if>
+      <if test="testtype != null">
+        testType,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="scenename != null">
+        #{scenename,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="scenetype != null">
+        #{scenetype,jdbcType=VARCHAR},
+      </if>
+      <if test="targettype != null">
+        #{targettype,jdbcType=VARCHAR},
+      </if>
+      <if test="roadtype != null">
+        #{roadtype,jdbcType=VARCHAR},
+      </if>
+      <if test="lanenum != null">
+        #{lanenum,jdbcType=INTEGER},
+      </if>
+      <if test="apolloscore != null">
+        #{apolloscore,jdbcType=REAL},
+      </if>
+      <if test="downloadlink != null">
+        #{downloadlink,jdbcType=VARCHAR},
+      </if>
+      <if test="originalgif != null">
+        #{originalgif,jdbcType=VARCHAR},
+      </if>
+      <if test="bestgif != null">
+        #{bestgif,jdbcType=VARCHAR},
+      </if>
+      <if test="carnum != null">
+        #{carnum,jdbcType=INTEGER},
+      </if>
+      <if test="scenetime != null">
+        #{scenetime,jdbcType=REAL},
+      </if>
+      <if test="testtype != null">
+        #{testtype,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.evan.seprojrearend.po.Scene">
+    update scene
+    <set>
+      <if test="version != null">
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="scenetype != null">
+        sceneType = #{scenetype,jdbcType=VARCHAR},
+      </if>
+      <if test="targettype != null">
+        targetType = #{targettype,jdbcType=VARCHAR},
+      </if>
+      <if test="roadtype != null">
+        roadType = #{roadtype,jdbcType=VARCHAR},
+      </if>
+      <if test="lanenum != null">
+        laneNum = #{lanenum,jdbcType=INTEGER},
+      </if>
+      <if test="apolloscore != null">
+        apolloScore = #{apolloscore,jdbcType=REAL},
+      </if>
+      <if test="downloadlink != null">
+        downloadLink = #{downloadlink,jdbcType=VARCHAR},
+      </if>
+      <if test="originalgif != null">
+        originalGif = #{originalgif,jdbcType=VARCHAR},
+      </if>
+      <if test="bestgif != null">
+        bestGif = #{bestgif,jdbcType=VARCHAR},
+      </if>
+      <if test="carnum != null">
+        carNum = #{carnum,jdbcType=INTEGER},
+      </if>
+      <if test="scenetime != null">
+        sceneTime = #{scenetime,jdbcType=REAL},
+      </if>
+      <if test="testtype != null">
+        testType = #{testtype,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.evan.seprojrearend.po.Scene">
+    update scene
+    set version = #{version,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      sceneType = #{scenetype,jdbcType=VARCHAR},
+      targetType = #{targettype,jdbcType=VARCHAR},
+      roadType = #{roadtype,jdbcType=VARCHAR},
+      laneNum = #{lanenum,jdbcType=INTEGER},
+      apolloScore = #{apolloscore,jdbcType=REAL},
+      downloadLink = #{downloadlink,jdbcType=VARCHAR},
+      originalGif = #{originalgif,jdbcType=VARCHAR},
+      bestGif = #{bestgif,jdbcType=VARCHAR},
+      carNum = #{carnum,jdbcType=INTEGER},
+      sceneTime = #{scenetime,jdbcType=REAL},
+      testType = #{testtype,jdbcType=VARCHAR}
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.evan.seprojrearend.po.Scene">
+    <id column="sceneName" jdbcType="VARCHAR" property="scenename" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="sceneType" jdbcType="VARCHAR" property="scenetype" />
+    <result column="targetType" jdbcType="VARCHAR" property="targettype" />
+    <result column="roadType" jdbcType="VARCHAR" property="roadtype" />
+    <result column="laneNum" jdbcType="INTEGER" property="lanenum" />
+    <result column="apolloScore" jdbcType="REAL" property="apolloscore" />
+    <result column="downloadLink" jdbcType="VARCHAR" property="downloadlink" />
+    <result column="originalGif" jdbcType="VARCHAR" property="originalgif" />
+    <result column="bestGif" jdbcType="VARCHAR" property="bestgif" />
+    <result column="carNum" jdbcType="INTEGER" property="carnum" />
+    <result column="sceneTime" jdbcType="REAL" property="scenetime" />
+    <result column="testType" jdbcType="VARCHAR" property="testtype" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sceneName, version, source, sceneType, targetType, roadType, laneNum, apolloScore, 
+    downloadLink, originalGif, bestGif, carNum, sceneTime, testType
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from scene
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from scene
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.evan.seprojrearend.po.Scene">
+    insert into scene (sceneName, version, source, 
+      sceneType, targetType, roadType, 
+      laneNum, apolloScore, downloadLink, 
+      originalGif, bestGif, carNum, 
+      sceneTime, testType)
+    values (#{scenename,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, 
+      #{scenetype,jdbcType=VARCHAR}, #{targettype,jdbcType=VARCHAR}, #{roadtype,jdbcType=VARCHAR}, 
+      #{lanenum,jdbcType=INTEGER}, #{apolloscore,jdbcType=REAL}, #{downloadlink,jdbcType=VARCHAR}, 
+      #{originalgif,jdbcType=VARCHAR}, #{bestgif,jdbcType=VARCHAR}, #{carnum,jdbcType=INTEGER}, 
+      #{scenetime,jdbcType=REAL}, #{testtype,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.evan.seprojrearend.po.Scene">
+    insert into scene
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="scenename != null">
+        sceneName,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="scenetype != null">
+        sceneType,
+      </if>
+      <if test="targettype != null">
+        targetType,
+      </if>
+      <if test="roadtype != null">
+        roadType,
+      </if>
+      <if test="lanenum != null">
+        laneNum,
+      </if>
+      <if test="apolloscore != null">
+        apolloScore,
+      </if>
+      <if test="downloadlink != null">
+        downloadLink,
+      </if>
+      <if test="originalgif != null">
+        originalGif,
+      </if>
+      <if test="bestgif != null">
+        bestGif,
+      </if>
+      <if test="carnum != null">
+        carNum,
+      </if>
+      <if test="scenetime != null">
+        sceneTime,
+      </if>
+      <if test="testtype != null">
+        testType,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="scenename != null">
+        #{scenename,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="scenetype != null">
+        #{scenetype,jdbcType=VARCHAR},
+      </if>
+      <if test="targettype != null">
+        #{targettype,jdbcType=VARCHAR},
+      </if>
+      <if test="roadtype != null">
+        #{roadtype,jdbcType=VARCHAR},
+      </if>
+      <if test="lanenum != null">
+        #{lanenum,jdbcType=INTEGER},
+      </if>
+      <if test="apolloscore != null">
+        #{apolloscore,jdbcType=REAL},
+      </if>
+      <if test="downloadlink != null">
+        #{downloadlink,jdbcType=VARCHAR},
+      </if>
+      <if test="originalgif != null">
+        #{originalgif,jdbcType=VARCHAR},
+      </if>
+      <if test="bestgif != null">
+        #{bestgif,jdbcType=VARCHAR},
+      </if>
+      <if test="carnum != null">
+        #{carnum,jdbcType=INTEGER},
+      </if>
+      <if test="scenetime != null">
+        #{scenetime,jdbcType=REAL},
+      </if>
+      <if test="testtype != null">
+        #{testtype,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.evan.seprojrearend.po.Scene">
+    update scene
+    <set>
+      <if test="version != null">
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="scenetype != null">
+        sceneType = #{scenetype,jdbcType=VARCHAR},
+      </if>
+      <if test="targettype != null">
+        targetType = #{targettype,jdbcType=VARCHAR},
+      </if>
+      <if test="roadtype != null">
+        roadType = #{roadtype,jdbcType=VARCHAR},
+      </if>
+      <if test="lanenum != null">
+        laneNum = #{lanenum,jdbcType=INTEGER},
+      </if>
+      <if test="apolloscore != null">
+        apolloScore = #{apolloscore,jdbcType=REAL},
+      </if>
+      <if test="downloadlink != null">
+        downloadLink = #{downloadlink,jdbcType=VARCHAR},
+      </if>
+      <if test="originalgif != null">
+        originalGif = #{originalgif,jdbcType=VARCHAR},
+      </if>
+      <if test="bestgif != null">
+        bestGif = #{bestgif,jdbcType=VARCHAR},
+      </if>
+      <if test="carnum != null">
+        carNum = #{carnum,jdbcType=INTEGER},
+      </if>
+      <if test="scenetime != null">
+        sceneTime = #{scenetime,jdbcType=REAL},
+      </if>
+      <if test="testtype != null">
+        testType = #{testtype,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.evan.seprojrearend.po.Scene">
+    update scene
+    set version = #{version,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      sceneType = #{scenetype,jdbcType=VARCHAR},
+      targetType = #{targettype,jdbcType=VARCHAR},
+      roadType = #{roadtype,jdbcType=VARCHAR},
+      laneNum = #{lanenum,jdbcType=INTEGER},
+      apolloScore = #{apolloscore,jdbcType=REAL},
+      downloadLink = #{downloadlink,jdbcType=VARCHAR},
+      originalGif = #{originalgif,jdbcType=VARCHAR},
+      bestGif = #{bestgif,jdbcType=VARCHAR},
+      carNum = #{carnum,jdbcType=INTEGER},
+      sceneTime = #{scenetime,jdbcType=REAL},
+      testType = #{testtype,jdbcType=VARCHAR}
+    where sceneName = #{scenename,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.evan.seprojrearend.po.Scene">
+    <id column="sceneName" jdbcType="VARCHAR" property="scenename" />
     <result column="source" jdbcType="VARCHAR" property="source" />
     <result column="sceneType" jdbcType="VARCHAR" property="scenetype" />
     <result column="riskType" jdbcType="VARCHAR" property="risktype" />

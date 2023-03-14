@@ -18,6 +18,8 @@ public interface SceneMapper {
 
     Scene selectByPrimaryKey(String scenename);
 
+
+
     Page<Scene> findByPaging(Map param);
 
     int updateByPrimaryKeySelective(Scene record);

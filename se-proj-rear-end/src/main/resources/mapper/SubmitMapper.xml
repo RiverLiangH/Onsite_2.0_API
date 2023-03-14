@@ -157,6 +157,304 @@
     <result column="submitTime" jdbcType="TIMESTAMP" property="submittime" />
     <result column="testTime" jdbcType="TIMESTAMP" property="testtime" />
     <result column="score" jdbcType="REAL" property="score" />
+    <result column="dockerId" jdbcType="VARCHAR" property="dockerid" />
+    <result column="paperType" jdbcType="VARCHAR" property="papertype" />
+    <result column="resultLink" jdbcType="VARCHAR" property="resultlink" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    submitId, submitterId, competitionId, submitTime, testTime, score, dockerId, paperType, 
+    resultLink, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from submit
+    where submitId = #{submitid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from submit
+    where submitId = #{submitid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.evan.seprojrearend.po.Submit">
+    insert into submit (submitId, submitterId, competitionId, 
+      submitTime, testTime, score, 
+      dockerId, paperType, resultLink, 
+      status)
+    values (#{submitid,jdbcType=VARCHAR}, #{submitterid,jdbcType=VARCHAR}, #{competitionid,jdbcType=VARCHAR}, 
+      #{submittime,jdbcType=TIMESTAMP}, #{testtime,jdbcType=TIMESTAMP}, #{score,jdbcType=REAL}, 
+      #{dockerid,jdbcType=VARCHAR}, #{papertype,jdbcType=VARCHAR}, #{resultlink,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.evan.seprojrearend.po.Submit">
+    insert into submit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="submitid != null">
+        submitId,
+      </if>
+      <if test="submitterid != null">
+        submitterId,
+      </if>
+      <if test="competitionid != null">
+        competitionId,
+      </if>
+      <if test="submittime != null">
+        submitTime,
+      </if>
+      <if test="testtime != null">
+        testTime,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="dockerid != null">
+        dockerId,
+      </if>
+      <if test="papertype != null">
+        paperType,
+      </if>
+      <if test="resultlink != null">
+        resultLink,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="submitid != null">
+        #{submitid,jdbcType=VARCHAR},
+      </if>
+      <if test="submitterid != null">
+        #{submitterid,jdbcType=VARCHAR},
+      </if>
+      <if test="competitionid != null">
+        #{competitionid,jdbcType=VARCHAR},
+      </if>
+      <if test="submittime != null">
+        #{submittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="testtime != null">
+        #{testtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=REAL},
+      </if>
+      <if test="dockerid != null">
+        #{dockerid,jdbcType=VARCHAR},
+      </if>
+      <if test="papertype != null">
+        #{papertype,jdbcType=VARCHAR},
+      </if>
+      <if test="resultlink != null">
+        #{resultlink,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.evan.seprojrearend.po.Submit">
+    update submit
+    <set>
+      <if test="submitterid != null">
+        submitterId = #{submitterid,jdbcType=VARCHAR},
+      </if>
+      <if test="competitionid != null">
+        competitionId = #{competitionid,jdbcType=VARCHAR},
+      </if>
+      <if test="submittime != null">
+        submitTime = #{submittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="testtime != null">
+        testTime = #{testtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=REAL},
+      </if>
+      <if test="dockerid != null">
+        dockerId = #{dockerid,jdbcType=VARCHAR},
+      </if>
+      <if test="papertype != null">
+        paperType = #{papertype,jdbcType=VARCHAR},
+      </if>
+      <if test="resultlink != null">
+        resultLink = #{resultlink,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where submitId = #{submitid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.evan.seprojrearend.po.Submit">
+    update submit
+    set submitterId = #{submitterid,jdbcType=VARCHAR},
+      competitionId = #{competitionid,jdbcType=VARCHAR},
+      submitTime = #{submittime,jdbcType=TIMESTAMP},
+      testTime = #{testtime,jdbcType=TIMESTAMP},
+      score = #{score,jdbcType=REAL},
+      dockerId = #{dockerid,jdbcType=VARCHAR},
+      paperType = #{papertype,jdbcType=VARCHAR},
+      resultLink = #{resultlink,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where submitId = #{submitid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.evan.seprojrearend.po.Submit">
+    <id column="submitId" jdbcType="VARCHAR" property="submitid" />
+    <result column="submitterId" jdbcType="VARCHAR" property="submitterid" />
+    <result column="competitionId" jdbcType="VARCHAR" property="competitionid" />
+    <result column="submitTime" jdbcType="TIMESTAMP" property="submittime" />
+    <result column="testTime" jdbcType="TIMESTAMP" property="testtime" />
+    <result column="score" jdbcType="REAL" property="score" />
+    <result column="dockerId" jdbcType="VARCHAR" property="dockerid" />
+    <result column="paperType" jdbcType="VARCHAR" property="papertype" />
+    <result column="resultLink" jdbcType="VARCHAR" property="resultlink" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    submitId, submitterId, competitionId, submitTime, testTime, score, dockerId, paperType, 
+    resultLink, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from submit
+    where submitId = #{submitid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from submit
+    where submitId = #{submitid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.evan.seprojrearend.po.Submit">
+    insert into submit (submitId, submitterId, competitionId, 
+      submitTime, testTime, score, 
+      dockerId, paperType, resultLink, 
+      status)
+    values (#{submitid,jdbcType=VARCHAR}, #{submitterid,jdbcType=VARCHAR}, #{competitionid,jdbcType=VARCHAR}, 
+      #{submittime,jdbcType=TIMESTAMP}, #{testtime,jdbcType=TIMESTAMP}, #{score,jdbcType=REAL}, 
+      #{dockerid,jdbcType=VARCHAR}, #{papertype,jdbcType=VARCHAR}, #{resultlink,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.evan.seprojrearend.po.Submit">
+    insert into submit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="submitid != null">
+        submitId,
+      </if>
+      <if test="submitterid != null">
+        submitterId,
+      </if>
+      <if test="competitionid != null">
+        competitionId,
+      </if>
+      <if test="submittime != null">
+        submitTime,
+      </if>
+      <if test="testtime != null">
+        testTime,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="dockerid != null">
+        dockerId,
+      </if>
+      <if test="papertype != null">
+        paperType,
+      </if>
+      <if test="resultlink != null">
+        resultLink,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="submitid != null">
+        #{submitid,jdbcType=VARCHAR},
+      </if>
+      <if test="submitterid != null">
+        #{submitterid,jdbcType=VARCHAR},
+      </if>
+      <if test="competitionid != null">
+        #{competitionid,jdbcType=VARCHAR},
+      </if>
+      <if test="submittime != null">
+        #{submittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="testtime != null">
+        #{testtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=REAL},
+      </if>
+      <if test="dockerid != null">
+        #{dockerid,jdbcType=VARCHAR},
+      </if>
+      <if test="papertype != null">
+        #{papertype,jdbcType=VARCHAR},
+      </if>
+      <if test="resultlink != null">
+        #{resultlink,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.evan.seprojrearend.po.Submit">
+    update submit
+    <set>
+      <if test="submitterid != null">
+        submitterId = #{submitterid,jdbcType=VARCHAR},
+      </if>
+      <if test="competitionid != null">
+        competitionId = #{competitionid,jdbcType=VARCHAR},
+      </if>
+      <if test="submittime != null">
+        submitTime = #{submittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="testtime != null">
+        testTime = #{testtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=REAL},
+      </if>
+      <if test="dockerid != null">
+        dockerId = #{dockerid,jdbcType=VARCHAR},
+      </if>
+      <if test="papertype != null">
+        paperType = #{papertype,jdbcType=VARCHAR},
+      </if>
+      <if test="resultlink != null">
+        resultLink = #{resultlink,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where submitId = #{submitid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.evan.seprojrearend.po.Submit">
+    update submit
+    set submitterId = #{submitterid,jdbcType=VARCHAR},
+      competitionId = #{competitionid,jdbcType=VARCHAR},
+      submitTime = #{submittime,jdbcType=TIMESTAMP},
+      testTime = #{testtime,jdbcType=TIMESTAMP},
+      score = #{score,jdbcType=REAL},
+      dockerId = #{dockerid,jdbcType=VARCHAR},
+      paperType = #{papertype,jdbcType=VARCHAR},
+      resultLink = #{resultlink,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where submitId = #{submitid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.evan.seprojrearend.po.Submit">
+    <id column="submitId" jdbcType="VARCHAR" property="submitid" />
+    <result column="submitterId" jdbcType="VARCHAR" property="submitterid" />
+    <result column="competitionId" jdbcType="VARCHAR" property="competitionid" />
+    <result column="submitTime" jdbcType="TIMESTAMP" property="submittime" />
+    <result column="testTime" jdbcType="TIMESTAMP" property="testtime" />
+    <result column="score" jdbcType="REAL" property="score" />
   </resultMap>
   <sql id="Base_Column_List">
     submitId, submitterId, competitionId, submitTime, testTime, score

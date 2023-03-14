@@ -44,6 +44,7 @@ public class SubmitController {
     @Autowired
     private CompetitionService competitionService;
 
+
     //密钥
     private static final String TOKEN_SECRET="ljdyaishijin**3nkjnj??";
 

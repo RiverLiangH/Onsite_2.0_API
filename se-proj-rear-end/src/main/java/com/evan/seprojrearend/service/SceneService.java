@@ -2,6 +2,7 @@ package com.evan.seprojrearend.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.evan.seprojrearend.mapper.SceneMapper;
+import com.evan.seprojrearend.mapper.sceneSubmitMapper;
 import com.evan.seprojrearend.po.Scene;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -15,6 +16,9 @@ public class SceneService {
 
     @Autowired
     private SceneMapper sceneMapper;
+
+    @Autowired
+    private sceneSubmitMapper sceneSubmitMapper;
 
     public SceneService(SceneMapper sceneMapper) {
         this.sceneMapper = sceneMapper;
@@ -42,4 +46,10 @@ public class SceneService {
     public JSONObject getSceneMsg(String sceneName){
         return sceneMapper.selectByScenename(sceneName);
     }
+
+    //根据sceneName返回所有提交的用户
+    public JSONObject sceneUser(String sceneName){
+        return sceneSubmitMapper.selectByScenename(sceneName);
+    }
+
 }
