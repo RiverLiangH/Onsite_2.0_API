@@ -126,14 +126,14 @@ public class UserController {
     public JsonResult modifyMsg(String userid, String username, String mobile, String email, Integer age, String sex, String school, String department, String supervisorname, String supervisorrank, String researchfield, String works, String name){
         Map<String, Object> message = new HashMap<>();  // 前后端传递消息
         String re = null;
-        re = userService.changeUserMsg(userid, username, mobile, email, age, sex, school, department, supervisorname, supervisorrank, researchfield, works, name);
-        message.put("state", re);
-//        try {
-//            re = userService.changeUserMsg(userid, username, mobile, email, age, sex, school, department, supervisorname, supervisorrank, researchfield, works, name);
-//            message.put("state", re);
-//        }catch (Exception e){
-//            return JsonResult.isError(10001,"未知错误");
-//        }
+//        re = userService.changeUserMsg(userid, username, mobile, email, age, sex, school, department, supervisorname, supervisorrank, researchfield, works, name);
+//        message.put("state", re);
+        try {
+            re = userService.changeUserMsg(userid, username, mobile, email, age, sex, school, department, supervisorname, supervisorrank, researchfield, works, name);
+            message.put("state", re);
+        }catch (Exception e){
+            return JsonResult.isError(10001,"未知错误");
+        }
         return JsonResult.isOk(message);
     }
 
@@ -175,6 +175,44 @@ public class UserController {
 //        message.put("state", re);
         try {
             re = userService.validateUsername(username);
+            message.put("state", re);
+        }catch (Exception e){
+            return JsonResult.isError(10001,"未知错误");
+        }
+        return JsonResult.isOk(message);
+    }
+
+    /**
+     * 判断电话是否存在
+     * **/
+    @ResponseBody
+    @PostMapping("validate_mobile")
+    public JsonResult validateMobile(String mobile){
+        Map<String, Object> message = new HashMap<>();  // 前后端传递消息
+        String re = null;
+//        re = userService.validateUsername(username);
+//        message.put("state", re);
+        try {
+            re = userService.validateMobile(mobile);
+            message.put("state", re);
+        }catch (Exception e){
+            return JsonResult.isError(10001,"未知错误");
+        }
+        return JsonResult.isOk(message);
+    }
+
+    /**
+     * 判断邮箱是否存在
+     * **/
+    @ResponseBody
+    @PostMapping("validate_email")
+    public JsonResult validateEmail(String email){
+        Map<String, Object> message = new HashMap<>();  // 前后端传递消息
+        String re = null;
+//        re = userService.validateUsername(username);
+//        message.put("state", re);
+        try {
+            re = userService.validateEmail(email);
             message.put("state", re);
         }catch (Exception e){
             return JsonResult.isError(10001,"未知错误");

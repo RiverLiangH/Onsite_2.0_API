@@ -33,6 +33,18 @@
     from user
     where username = #{username,jdbcType=VARCHAR}
   </select>
+  <!--  判断电话是否存在 -->
+  <select id="countMobile" resultType="int">
+    select count(*) as user_number
+    from user
+    where mobile = #{mobile,jdbcType=VARCHAR}
+  </select>
+  <!--  判断邮箱是否存在 -->
+  <select id="countEmail" resultType="int">
+    select count(*) as user_number
+    from user
+    where email = #{email,jdbcType=VARCHAR}
+  </select>
   <!--  修改个人信息 -->
   <select id="selectByUname" parameterType="java.lang.String" resultMap="BaseResultMap">
     select distinct

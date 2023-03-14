@@ -135,5 +135,24 @@ public class UserService {
             return "False";
     }
 
+    /**
+     * 判断电话是否存在
+     * **/
+    public String validateMobile(String mobile){
+        if(userMapper.countMobile(mobile)>=1)
+            return "True";
+        else
+            return "False";
+    }
+
+    /**
+     * 判断邮箱是否存在
+     * **/
+    public String validateEmail(String email){
+        if(userMapper.countEmail(email)>=1)
+            return "True";
+        else
+            return "False";
+    }
 
 }

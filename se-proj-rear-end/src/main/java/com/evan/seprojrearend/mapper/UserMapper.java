@@ -31,4 +31,10 @@ public interface UserMapper {
 
     //查询用户名
     int countUsername(@Param("username") String username);
+
+    //查询电话
+    int countMobile(@Param("mobile") String mobile);
+
+    //查询邮箱
+    int countEmail(@Param("email") String email);
 }
