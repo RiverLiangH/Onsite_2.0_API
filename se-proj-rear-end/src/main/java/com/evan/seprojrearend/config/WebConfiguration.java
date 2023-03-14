@@ -60,6 +60,8 @@ public class WebConfiguration implements WebMvcConfigurer {
         excludePath.add("/user/login");  //登录
         excludePath.add("/user/sign_up");     //注册
         excludePath.add("/user/validate_username");  //判断用户名是否存在
+        excludePath.add("/user/validate_mobile");
+        excludePath.add("/user/validate_email");
         excludePath.add("/doc.html");     //swagger
         excludePath.add("/swagger-ui.html");     //swagger
         excludePath.add("/swagger-resources/**");     //swagger
