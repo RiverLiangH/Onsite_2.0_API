@@ -36,7 +36,7 @@ public class SubmitService {
     /**
      * 用户提交比赛作品
      * **/
-    public JSONObject newSubmit(String papertype, String submitterid, String competitionid, String dockerid){
+    public JSONObject newSubmit(Date switchtime, String submitterid, String competitionid, String dockerid){
         JSONObject message = new JSONObject();  // 需要返回的数据
         System.out.println("newSubmit开始执行");
         Submit newSubmit = new Submit();
@@ -50,7 +50,15 @@ public class SubmitService {
         newSubmit.setCompetitionid(competitionid);
         newSubmit.setDockerid(dockerid);
         newSubmit.setSubmittime(dates);
-        newSubmit.setPapertype(papertype);
+        if(switchtime.compareTo(dates)>0){
+            newSubmit.setPapertype("A");
+            message.put("paperType","A");
+        }
+        else {
+            newSubmit.setPapertype("B");
+            message.put("paperType","B");
+        }
+//        newSubmit.setPapertype(papertype);
         newSubmit.setStatus("QUEUING");
 
         /*将需要返回的信息加入message中*/
@@ -58,7 +66,7 @@ public class SubmitService {
         message.put("dockerId",dockerid);
         message.put("submitterId",submitterid);
         message.put("competitionId",competitionid);
-        message.put("paperType",papertype);
+//        message.put("paperType",papertype);
 
         Entry tempEntry = entryMapper.selectByPrimaryKey(submitterid,competitionid);
         System.out.println("tempEntry:"+tempEntry);

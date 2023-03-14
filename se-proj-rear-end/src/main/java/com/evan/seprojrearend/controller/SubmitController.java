@@ -24,6 +24,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -63,15 +65,36 @@ public class SubmitController {
         String username = decodedJWT.getClaim("username").asString();
         System.out.println(username);
 
+
         try {
             user = userService.checkMsg(username);  // 获取用户信息
             competition = competitionService.getCompetitionInfo(competitionName);   // 获取比赛信息
             String userid = user.getString("userId");
             String competitionid = competition.getString("competitionId");
+
+            /**获取switchtime**/
+//            String switchtime_str = competition.getString("switchtime");
+//            System.out.println("时间："+switchtime_str);
+//
+//            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh-mm-ss");
+//            System.out.println("执行到Date转换前");
+////            DateFormat mediumDateFormat = DateFormat.getDateTimeInstance(DateFormat.MEDIUM,DateFormat.MEDIUM);
+//            Date switchtime = sdf.parse(switchtime_str);
+//            System.out.println(switchtime.getTime());
+
+            String switchtime_str = competition.getString("switchtime");
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+            Date switchtime = format.parse(switchtime_str);
+            System.out.println(switchtime);
+
+
+            System.out.println("执行enter操作");
+            System.out.println(switchtime);
+
             System.out.println("userid:"+userid);
             System.out.println("competitionid:"+competitionid);
 
-            JSONObject submit = submitService.newSubmit(paperType,userid,competitionid,dockerId);
+            JSONObject submit = submitService.newSubmit(switchtime,userid,competitionid,dockerId);
             message.put("submit",submit);
 //            if(result.equals("False"))
 //                return JsonResult.isError(10001,"未参赛不允许进行提交");
